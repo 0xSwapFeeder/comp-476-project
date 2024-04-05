@@ -17,4 +17,24 @@ public class MainMenu : MonoBehaviour
     public void FullScreen(bool isFullScreen) {
         Screen.fullScreen = isFullScreen;
     }
+
+    public void setKeeper() {
+        PlayerPrefs.SetString("PlayerClass", "Keeper");
+        PlayerPrefs.Save();
+    }
+
+    public void setChaser() {
+        PlayerPrefs.SetString("PlayerClass", "Chaser");
+        PlayerPrefs.Save();
+    }
+
+    public void setSeeker() {
+        PlayerPrefs.SetString("PlayerClass", "Seeker");
+        PlayerPrefs.Save();
+    }
+
+    public void setBeater() {
+        PlayerPrefs.SetString("PlayerClass", "Beater");
+        PlayerPrefs.Save();
+    }
 }
