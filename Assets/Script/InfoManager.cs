@@ -21,13 +21,17 @@ public class InfoManager : MonoBehaviour
     public GameObject ScreenWinHufflepuff;
     public GameObject ScreenWinRavenclaw;
 
+    public GameObject MidGameScreen;
+
     public float scoreTeam1 = 0;
     public float scoreTeam2 = 0;
-    public float gameLength = 480;
+    public float gameLength = 0;
+    public float totalTime = 480;
     private string classPlayer = "Seeker";
     private Teams teamFirst = Teams.Slytherin;
     private Teams teamSecond = Teams.Gryffindor;
     private bool gameEnded = false;
+    private bool midGame = false;
 
     void Start()
     {
@@ -70,17 +74,35 @@ public class InfoManager : MonoBehaviour
         {
             ScreenDuringGame.SetActive(false);
             Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
             WinningTeam();
             return;
         }
-        gameLength -= Time.deltaTime;
-        timerText.text = "Time: " + Mathf.Round(gameLength);
-        if (gameLength <= 0)
+        gameLength += Time.deltaTime;
+        int minutes = Mathf.FloorToInt(gameLength / 60F);
+        timerText.text = "Time: " + minutes.ToString() + "m " + (gameLength % 60).ToString("00") + "s";
+        if (gameLength >= totalTime / 2 && !midGame) {
+            ScreenDuringGame.SetActive(false);
+            MidGameScreen.SetActive(true);
+            Time.timeScale = 0;
+            midGame = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        if (gameLength >= totalTime)
         {
+            Debug.Log("Game ended !");
             timerText.text = "Game ended !";
             gameEnded = true;
         }
         scoreText.text = teamFirst.ToString() + ": " + scoreTeam1 + " - " + scoreTeam2 + " : " + teamSecond.ToString();
+    }
+
+    public void LaunchGameSecondHalf()
+    {
+        MidGameScreen.SetActive(false);
+        ScreenDuringGame.SetActive(true);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void SetGameEnded(Teams catchSnitchTeam)
