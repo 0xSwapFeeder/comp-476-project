@@ -11,6 +11,7 @@ public class Quaffle : MonoBehaviour
     public Vector3 positionSpawn;
     void Start()
     {
+        GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
     }
 
     // Update is called once per frame
@@ -44,11 +45,13 @@ public class Quaffle : MonoBehaviour
             infoManager.scoreTeam1 += 10;
             Destroy(gameObject);
             Instantiate(gameObject, positionSpawn, Quaternion.identity);
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
         }
         if (collision.gameObject.CompareTag("GoalSecond")) {
             infoManager.scoreTeam2 += 10;
             Destroy(gameObject);
             Instantiate(gameObject, positionSpawn, Quaternion.identity);
+            GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
         }
     }
 }
