@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject player;
-    private Vector3 offset;
+    public Transform target;
+    public float pLerp = .02f;
+    public float rLerp = .01f;
 
     void Start()
     {
-        offset = transform.position - player.transform.position;
     }
 
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        transform.position = Vector3.Lerp(transform.position, target.position, pLerp);
+        transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, rLerp);
     }
 }

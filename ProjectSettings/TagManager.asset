@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ball
+  - Keeper
+  - Seeker
+  - Chaser
+  - Beater
+  - GoalFirst
+  - GoalSecond
+  - Quaffle
   layers:
   - Default
   - TransparentFX
