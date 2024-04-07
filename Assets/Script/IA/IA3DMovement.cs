@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class IA3DMovement : MonoBehaviour
 {
@@ -11,15 +13,35 @@ public class IA3DMovement : MonoBehaviour
     public float BoostSpeed;
     public Vector3 Velocity;
     public float MaxBoostTime;
+    public float BoostCooldown;
     public float stopRadius;
     public float slowRadius;
     public float avoidDistance;
-    
+    public float DirectionChangingTime;
+
+    private Vector3 currentVelocity;
+    private float currentDirectionChangingTime;
     private float CurrentBoostTime;
+    private float CurrentBoostCooldown;
+    private bool boostingOnCooldown;
     private bool isBoosting;
     private bool asToSlow;
     private bool asToStop;
     private float distanceFromTarget;
+    private bool isChangingTarget;
+
+    private void CheckSuddenDirectionChange()
+    {
+        // if the previous velocity (currentVelocity) and the Velocity are approximately opposite
+        if (Vector3.Angle(currentVelocity, Velocity) > 90
+            || currentVelocity == -Velocity
+            || (Mathf.Approximately(currentVelocity.magnitude, 0) && !Mathf.Approximately(Velocity.magnitude, 0))
+            || (Mathf.Approximately(Velocity.magnitude, 0) && !Mathf.Approximately(currentVelocity.magnitude, 0)))
+        {
+            isChangingTarget = true;
+            currentDirectionChangingTime = 0;
+        } 
+    }
     
     private void Update()
     {
@@ -36,6 +58,33 @@ public class IA3DMovement : MonoBehaviour
         }
         else
             Velocity *= Speed;
+        UpdateBoost();
+        transform.position += Velocity * Time.deltaTime;
+        CheckSuddenDirectionChange();
+        ChangingDirection();
+        Velocity = Vector3.zero;
+    }
+
+    private void ChangingDirection()
+    {
+        if (!isChangingTarget)
+            currentVelocity = Velocity;
+        else if (currentDirectionChangingTime >= DirectionChangingTime)
+        {
+            currentDirectionChangingTime = 0;
+            isChangingTarget = false;
+        }
+        else
+        {
+            currentDirectionChangingTime += Time.deltaTime;
+            transform.position += currentVelocity
+            * Mathf.Lerp(1, 0,currentDirectionChangingTime / DirectionChangingTime)
+            * Time.deltaTime;
+        }
+    }
+
+    private void UpdateBoost()
+    {
         if (isBoosting)
         {
             Velocity *= BoostSpeed;
@@ -44,10 +93,15 @@ public class IA3DMovement : MonoBehaviour
             {
                 CurrentBoostTime = 0;
                 isBoosting = false;
+                boostingOnCooldown = true;
             }
         }
-        transform.position += Velocity * Time.deltaTime;
-        Velocity = Vector3.zero;
+
+        if (!boostingOnCooldown) return;
+        CurrentBoostCooldown += Time.deltaTime;
+        if (!(CurrentBoostCooldown >= BoostCooldown)) return;
+        CurrentBoostCooldown = 0;
+        boostingOnCooldown = false;
     }
 
     public void Flee(Vector3 target)
@@ -136,10 +190,8 @@ public class IA3DMovement : MonoBehaviour
 
     public void Boost()
     {
-        if (isBoosting)
-        {
+        if (isBoosting || boostingOnCooldown)
             return;
-        }
         isBoosting = true;
     }
 }
