@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static InfoManager;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     }
     private Rigidbody rb;
     private PlayerClass playerClass;
+    public Teams team = Teams.Gryffindor;
     public float moveSpeed = 7f;
     public float rotationSpeed = 5f;
     public Camera playerCamera;
@@ -26,6 +28,23 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         string playerClassPref = PlayerPrefs.GetString("PlayerClass");
+        string teamPref = PlayerPrefs.GetString("Team");
+        switch (teamPref) {
+            case "Gryffindor":
+                team = Teams.Gryffindor;
+                break;
+            case "Slytherin":
+                team = Teams.Slytherin;
+                break;
+            case "Hufflepuff":
+                team = Teams.Hufflepuff;
+                break;
+            case "Ravenclaw":
+                team = Teams.Ravenclaw;
+                break;
+            default:
+                break;
+        }
         switch (playerClassPref) {
             case "Beater":
                 playerClass = PlayerClass.Beater;
@@ -92,10 +111,23 @@ public class Player : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Quaffle" && canPickUpBall) {
+        if (collision.gameObject.tag == "Player" && ballHolding != null) {
+            ballHolding.GetComponent<Quaffle>().GetThrown(collision.transform);
+            isHoldingBall = false;
+            StartCoroutine(WaitBeforeNextPickup());
+        }
+        if (collision.gameObject.tag == "Quaffle" && canPickUpBall && (playerClass == PlayerClass.Chaser || playerClass == PlayerClass.Keeper)) {
             ballHolding = collision.gameObject;
             ballHolding.GetComponent<Quaffle>().PickUp(transform);
             isHoldingBall = true;
+        }
+        if (collision.gameObject.tag == "Snitch" && canPickUpBall && playerClass == PlayerClass.Seeker) {
+            if (Input.GetKeyDown(KeyCode.E)) {
+                collision.gameObject.GetComponent<GoldenSnitch>().GetCatch(team);
+            }
+        }
+        if (collision.gameObject.tag == "Bludger" && playerClass == PlayerClass.Beater) {
+            Debug.Log("Bludger hit");
         }
         StartCoroutine(HandleCollision());
     }

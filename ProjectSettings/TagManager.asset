@@ -12,6 +12,8 @@ TagManager:
   - GoalFirst
   - GoalSecond
   - Quaffle
+  - Snitch
+  - Bludger
   layers:
   - Default
   - TransparentFX
