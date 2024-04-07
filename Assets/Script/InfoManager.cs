@@ -15,13 +15,15 @@ public class InfoManager : MonoBehaviour
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI classText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI midGameText;
     public GameObject ScreenDuringGame;
     public GameObject ScreenWinGryffindor;
     public GameObject ScreenWinSlytherin;
     public GameObject ScreenWinHufflepuff;
     public GameObject ScreenWinRavenclaw;
-
     public GameObject MidGameScreen;
+    public SetIARole firstTeamIa;
+    public SetIARole secondTeamIa;
 
     public float scoreTeam1 = 0;
     public float scoreTeam2 = 0;
@@ -87,6 +89,7 @@ public class InfoManager : MonoBehaviour
             Time.timeScale = 0;
             midGame = true;
             Cursor.lockState = CursorLockMode.None;
+            midGameText.text = teamFirst.ToString() + " : " + scoreTeam1 + " - " + scoreTeam2 + " : " + teamSecond.ToString();
         }
         if (gameLength >= totalTime)
         {
@@ -103,6 +106,8 @@ public class InfoManager : MonoBehaviour
         ScreenDuringGame.SetActive(true);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        firstTeamIa.LaunchGame();
+        secondTeamIa.LaunchGame();
     }
 
     public void SetGameEnded(Teams catchSnitchTeam)

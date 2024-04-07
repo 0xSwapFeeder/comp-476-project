@@ -111,7 +111,7 @@ public class Player : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Player" && ballHolding != null) {
+        if (ballHolding != null) {
             ballHolding.GetComponent<Quaffle>().GetThrown(collision.transform);
             isHoldingBall = false;
             StartCoroutine(WaitBeforeNextPickup());
