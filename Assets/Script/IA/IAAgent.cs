@@ -48,4 +48,11 @@ public class IAAgent : MonoBehaviour
             ? GameObject.FindGameObjectsWithTag("RedTeam").Select(g => g.GetComponent<IAAgent>()).ToList()
             : GameObject.FindGameObjectsWithTag("BlueTeam").Select(g => g.GetComponent<IAAgent>()).ToList();
     }
+    
+    public List<IAAgent> GetOppositeTeamMembers()
+    {
+        return team == Team.Red 
+            ? GameObject.FindGameObjectsWithTag("BlueTeam").Select(g => g.GetComponent<IAAgent>()).ToList()
+            : GameObject.FindGameObjectsWithTag("RedTeam").Select(g => g.GetComponent<IAAgent>()).ToList();
+    }
 }
