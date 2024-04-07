@@ -11,7 +11,7 @@ public class Quaffle : MonoBehaviour
     public Vector3 positionSpawn;
     void Start()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
+        startGame();
     }
 
     // Update is called once per frame
@@ -53,5 +53,10 @@ public class Quaffle : MonoBehaviour
             Instantiate(gameObject, positionSpawn, Quaternion.identity);
             GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
         }
+    }
+
+    public void startGame()
+    {
+        GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
     }
 }

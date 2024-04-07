@@ -24,6 +24,7 @@ public class InfoManager : MonoBehaviour
     public GameObject MidGameScreen;
     public SetIARole firstTeamIa;
     public SetIARole secondTeamIa;
+    public Quaffle quaffle;
 
     public float scoreTeam1 = 0;
     public float scoreTeam2 = 0;
@@ -108,6 +109,7 @@ public class InfoManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         firstTeamIa.LaunchGame();
         secondTeamIa.LaunchGame();
+        quaffle.startGame();
     }
 
     public void SetGameEnded(Teams catchSnitchTeam)
