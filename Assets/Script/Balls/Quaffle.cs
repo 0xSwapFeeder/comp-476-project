@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Quaffle : MonoBehaviour
 {
     // Start is called before the first frame update
     private Transform playerToFollow;
+    public InfoManager infoManager;
+    public Vector3 positionSpawn;
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -35,5 +37,18 @@ public class Quaffle : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(direction.forward * 10, ForceMode.Impulse);
         GetComponent<Collider>().enabled = true;
         playerToFollow = null;
+    }
+
+    public void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.CompareTag("GoalFirst")) {
+            infoManager.scoreTeam1 += 10;
+            Destroy(gameObject);
+            Instantiate(gameObject, positionSpawn, Quaternion.identity);
+        }
+        if (collision.gameObject.CompareTag("GoalSecond")) {
+            infoManager.scoreTeam2 += 10;
+            Destroy(gameObject);
+            Instantiate(gameObject, positionSpawn, Quaternion.identity);
+        }
     }
 }

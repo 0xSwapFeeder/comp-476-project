@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private bool isHoldingBall = false;
     private GameObject ballHolding;
     private bool isControlEnabled = true;
+    private bool canPickUpBall = true;
     
     void Start()
     {
@@ -72,9 +73,9 @@ public class Player : MonoBehaviour
             rb.velocity = moveDirection * moveSpeed;
 
             if (Input.GetMouseButtonDown(0) && isHoldingBall) {
-                Debug.Log("Throwing ball");
                 ballHolding.GetComponent<Quaffle>().GetThrown(playerCamera.transform);
                 isHoldingBall = false;
+                StartCoroutine(WaitBeforeNextPickup());
             }
         }
     }
@@ -91,8 +92,7 @@ public class Player : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Quaffle") {
-            Debug.Log("Quaffle");
+        if (collision.gameObject.tag == "Quaffle" && canPickUpBall) {
             ballHolding = collision.gameObject;
             ballHolding.GetComponent<Quaffle>().PickUp(transform);
             isHoldingBall = true;
@@ -108,5 +108,11 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.8f);
 
         isControlEnabled = true;
+    }
+
+    IEnumerator WaitBeforeNextPickup() {
+        canPickUpBall = false;
+        yield return new WaitForSeconds(1f);
+        canPickUpBall = true;
     }
 }
