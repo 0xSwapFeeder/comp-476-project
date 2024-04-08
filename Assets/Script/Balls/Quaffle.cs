@@ -9,9 +9,13 @@ public class Quaffle : MonoBehaviour
     private Transform playerToFollow;
     public InfoManager infoManager;
     public Vector3 positionSpawn;
+    private readonly float maxHeight = 20f;
+    private readonly float minHeight = -8f;
+    private Rigidbody rb;
     void Start()
     {
         startGame();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -20,6 +24,10 @@ public class Quaffle : MonoBehaviour
         if (playerToFollow != null) {
             transform.localPosition = new Vector3(0.8f, 0, 1f);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
+        } else if (transform.position.y >= maxHeight) {
+            rb.AddForce(Vector3.down * 5, ForceMode.Impulse);
+        } else if (transform.position.y <= minHeight) {
+            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         }
     }
 
@@ -43,20 +51,21 @@ public class Quaffle : MonoBehaviour
     public void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("GoalFirst")) {
             infoManager.scoreTeam1 += 10;
-            Destroy(gameObject);
-            Instantiate(gameObject, positionSpawn, Quaternion.identity);
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
+            startGame();
         }
         if (collision.gameObject.CompareTag("GoalSecond")) {
             infoManager.scoreTeam2 += 10;
-            Destroy(gameObject);
-            Instantiate(gameObject, positionSpawn, Quaternion.identity);
-            GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
+            startGame();
         }
     }
 
     public void startGame()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.up * 3, ForceMode.Impulse);
+        transform.position = positionSpawn;
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        rb.AddForce(Vector3.up * 3, ForceMode.Impulse);
     }
 }

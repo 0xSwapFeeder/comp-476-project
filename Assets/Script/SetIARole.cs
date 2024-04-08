@@ -79,14 +79,14 @@ public class SetIARole : MonoBehaviour
             else if (beater > 0) {
                 child.tag = "Beater";
                 GiveBat(child.transform.GetChild(0));
-                child.position = BeaterPositions[0].position;
-                BeaterPositions = BeaterPositions[1..];
+                child.position = BeatersPosition[0].position;
+                BeatersPosition = BeatersPosition[1..];
                 beater -= 1;
             }
             else if (chaser > 0) {
                 child.tag = "Chaser";
-                child.position = ChaserPosition[0].position;
-                ChaserPosition = ChaserPosition[1..];
+                child.position = ChasersPositions[0].position;
+                ChasersPositions = ChasersPositions[1..];
                 chaser -= 1;
             }
         }
@@ -119,6 +119,8 @@ public class SetIARole : MonoBehaviour
 
     public void LaunchGame()
     {
+        var BeatersPositions = BeaterPositions;
+        var ChasersPositions = ChaserPosition;
         foreach(Transform child in transform)
         {
             if (child.CompareTag("Keeper")) {
@@ -126,11 +128,11 @@ public class SetIARole : MonoBehaviour
             } else if (child.CompareTag("Seeker")) {
                 child.position = SeekerPosition.position;
             } else if (child.CompareTag("Beater")) {
-                child.position = BeaterPositions[0].position;
-                BeaterPositions = BeaterPositions[1..];
+                child.position = BeatersPositions[0].position;
+                BeatersPositions = BeatersPositions[1..];
             } else if (child.CompareTag("Chaser")) {
-                child.position = ChaserPosition[0].position;
-                ChaserPosition = ChaserPosition[1..];
+                child.position = ChasersPositions[0].position;
+                ChasersPositions = ChasersPositions[1..];
             }
         }
     }

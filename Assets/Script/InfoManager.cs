@@ -25,6 +25,12 @@ public class InfoManager : MonoBehaviour
     public SetIARole firstTeamIa;
     public SetIARole secondTeamIa;
     public Quaffle quaffle;
+    public GameObject GryffindorFlags;
+    public GameObject SlytherinFlags;
+    public GameObject HufflepuffFlags;
+    public GameObject RavenclawFlags;
+    public Material secondHalfSkybox;
+    public GameObject screenPause;
 
     public float scoreTeam1 = 0;
     public float scoreTeam2 = 0;
@@ -53,18 +59,26 @@ public class InfoManager : MonoBehaviour
             case "Gryffindor":
                 teamFirst = Teams.Gryffindor;
                 teamSecond = Teams.Slytherin;
+                GryffindorFlags.SetActive(true);
+                SlytherinFlags.SetActive(true);
                 break;
             case "Slytherin":
                 teamFirst = Teams.Slytherin;
                 teamSecond = Teams.Gryffindor;
+                GryffindorFlags.SetActive(true);
+                SlytherinFlags.SetActive(true);
                 break;
             case "Hufflepuff":
                 teamFirst = Teams.Hufflepuff;
                 teamSecond = Teams.Ravenclaw;
+                HufflepuffFlags.SetActive(true);
+                RavenclawFlags.SetActive(true);
                 break;
             case "Ravenclaw":
                 teamFirst = Teams.Ravenclaw;
                 teamSecond = Teams.Hufflepuff;
+                HufflepuffFlags.SetActive(true);
+                RavenclawFlags.SetActive(true);
                 break;
         }
 
@@ -73,6 +87,12 @@ public class InfoManager : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            ScreenDuringGame.SetActive(false);
+            screenPause.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+        }
         if (gameEnded)
         {
             ScreenDuringGame.SetActive(false);
@@ -83,7 +103,7 @@ public class InfoManager : MonoBehaviour
         }
         gameLength += Time.deltaTime;
         int minutes = Mathf.FloorToInt(gameLength / 60F);
-        timerText.text = "Time: " + minutes.ToString() + "m " + (gameLength % 60).ToString("00") + "s";
+        timerText.text = minutes.ToString() + "m " + (gameLength % 60).ToString("00") + "s";
         if (gameLength >= totalTime / 2 && !midGame) {
             ScreenDuringGame.SetActive(false);
             MidGameScreen.SetActive(true);
@@ -107,9 +127,18 @@ public class InfoManager : MonoBehaviour
         ScreenDuringGame.SetActive(true);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+        RenderSettings.skybox = secondHalfSkybox;
         firstTeamIa.LaunchGame();
         secondTeamIa.LaunchGame();
         quaffle.startGame();
+    }
+
+    public void ResumeGame()
+    {
+        ScreenDuringGame.SetActive(true);
+        screenPause.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void SetGameEnded(Teams catchSnitchTeam)

@@ -122,7 +122,7 @@ public class Player : MonoBehaviour
             isHoldingBall = true;
         }
         if (collision.gameObject.tag == "Snitch" && canPickUpBall && playerClass == PlayerClass.Seeker) {
-            if (Input.GetKeyDown(KeyCode.E)) {
+            if (Input.GetKey(KeyCode.E)) {
                 collision.gameObject.GetComponent<GoldenSnitch>().GetCatch(team);
             }
         }
