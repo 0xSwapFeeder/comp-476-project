@@ -9,9 +9,9 @@ public class Bludger : MonoBehaviour
     {
         Grabed,
         Chased,
-        ThrownByRed,
-        ThrownByBlue
+        Thrown,
     }
+    public InfoManager.Teams thrownBy;
     public BludgerState State;
     public Transform Target;
     public IA3DMovement movement;
@@ -22,10 +22,12 @@ public class Bludger : MonoBehaviour
         
     }
     
-    public void Throw(Transform target, float force)
+    public void Throw(Transform target, float force, InfoManager.Teams team)
     {
         Target = target;
         movement.Speed = force;
+        thrownBy = team;
+        State = BludgerState.Thrown;
     }
     
     public void Grab()
@@ -38,7 +40,7 @@ public class Bludger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (State == BludgerState.ThrownByBlue || State == BludgerState.ThrownByRed)
+        if (State == BludgerState.Thrown)
         {
             movement.Target = Target;
             movement.Pursue();

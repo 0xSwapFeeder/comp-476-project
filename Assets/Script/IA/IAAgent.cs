@@ -11,14 +11,9 @@ public class IAAgent : MonoBehaviour
         Chaser,
         Beater
     }
-    public enum Team
-    {
-        Red,
-        Blue
-    }
     
     public IA3DMovement movement;
-    public Team team;
+    public InfoManager.Teams team;
     public AgentType type;
 
     // Update is called once per frame
@@ -44,15 +39,30 @@ public class IAAgent : MonoBehaviour
     
     public List<IAAgent> GetTeamMembers()
     {
-        return team == Team.Red 
-            ? GameObject.FindGameObjectsWithTag("RedTeam").Select(g => g.GetComponent<IAAgent>()).ToList()
-            : GameObject.FindGameObjectsWithTag("BlueTeam").Select(g => g.GetComponent<IAAgent>()).ToList();
+        var chasers = GameObject.FindGameObjectsWithTag("Chaser").Select(g => g.GetComponent<IAAgent>()).Where(g => g.team == team).ToList();
+        var seekers = GameObject.FindGameObjectsWithTag("Seeker").Select(g => g.GetComponent<IAAgent>()).Where(g => g.team == team).ToList();
+        var keepers = GameObject.FindGameObjectsWithTag("Keeper").Select(g => g.GetComponent<IAAgent>()).Where(g => g.team == team).ToList();
+        var beaters = GameObject.FindGameObjectsWithTag("Beater").Select(g => g.GetComponent<IAAgent>()).Where(g => g.team == team).ToList();
+        var teamMembers = new List<IAAgent>();
+        teamMembers.AddRange(chasers);
+        teamMembers.AddRange(seekers);
+        teamMembers.AddRange(keepers);
+        teamMembers.AddRange(beaters);
+        return teamMembers;
+        
     }
     
     public List<IAAgent> GetOppositeTeamMembers()
     {
-        return team == Team.Red 
-            ? GameObject.FindGameObjectsWithTag("BlueTeam").Select(g => g.GetComponent<IAAgent>()).ToList()
-            : GameObject.FindGameObjectsWithTag("RedTeam").Select(g => g.GetComponent<IAAgent>()).ToList();
+        var chasers = GameObject.FindGameObjectsWithTag("Chaser").Select(g => g.GetComponent<IAAgent>()).Where(g => g.team != team).ToList();
+        var seekers = GameObject.FindGameObjectsWithTag("Seeker").Select(g => g.GetComponent<IAAgent>()).Where(g => g.team != team).ToList();
+        var keepers = GameObject.FindGameObjectsWithTag("Keeper").Select(g => g.GetComponent<IAAgent>()).Where(g => g.team != team).ToList();
+        var beaters = GameObject.FindGameObjectsWithTag("Beater").Select(g => g.GetComponent<IAAgent>()).Where(g => g.team != team).ToList();
+        var teamMembers = new List<IAAgent>();
+        teamMembers.AddRange(chasers);
+        teamMembers.AddRange(seekers);
+        teamMembers.AddRange(keepers);
+        teamMembers.AddRange(beaters);
+        return teamMembers;
     }
 }
