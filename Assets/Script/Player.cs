@@ -22,9 +22,11 @@ public class Player : MonoBehaviour
     private GameObject ballHolding;
     private bool isControlEnabled = true;
     private bool canPickUpBall = true;
+    private Animator animator;
     
     void Start()
     {
+        animator = transform.GetChild(0).GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         string playerClassPref = PlayerPrefs.GetString("PlayerClass");
@@ -79,6 +81,14 @@ public class Player : MonoBehaviour
             newRotation.z -= turnY;
 
             transform.rotation = Quaternion.Euler(newRotation);
+            // If the player press space bar, the player will jump
+            if (Input.GetKey(KeyCode.Space)) {
+                print("hello");
+                rb.AddForce(Vector3.up * 2, ForceMode.Impulse);
+            }
+            if (Input.GetKey(KeyCode.A)) {
+                rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
+            }
         }
     }
 
@@ -95,19 +105,9 @@ public class Player : MonoBehaviour
                 ballHolding.GetComponent<Quaffle>().GetThrown(playerCamera.transform);
                 isHoldingBall = false;
                 StartCoroutine(WaitBeforeNextPickup());
+                animator.SetBool("Throwing", true);
             }
         }
-    }
-
-    void OnCollisionStay(Collision collision) {
-        // if (collision.gameObject.tag == "Quaffle") {
-        //     Debug.Log("Quaffle");
-        //     if (Input.GetKeyDown(KeyCode.E)) {
-        //         ballHolding = collision.gameObject;
-        //         ballHolding.GetComponent<Quaffle>().PickUp(transform);
-        //         isHoldingBall = true;
-        //     }
-        // }
     }
 
     void OnCollisionEnter(Collision collision) {
@@ -146,5 +146,6 @@ public class Player : MonoBehaviour
         canPickUpBall = false;
         yield return new WaitForSeconds(1f);
         canPickUpBall = true;
+        animator.SetBool("Throwing", false);
     }
 }

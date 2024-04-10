@@ -57,6 +57,9 @@ public class Quaffle : MonoBehaviour
             infoManager.scoreTeam2 += 10;
             startGame();
         }
+        if (collision.gameObject.CompareTag("Wall")) {
+            rb.velocity = Vector3.Reflect(rb.velocity, collision.contacts[0].normal);
+        }
     }
 
     public void startGame()
