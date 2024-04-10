@@ -1247,6 +1247,7 @@ GameObject:
   - component: {fileID: 296671013}
   - component: {fileID: 296671015}
   - component: {fileID: 296671014}
+  - component: {fileID: 296671016}
   m_Layer: 0
   m_Name: IA (1)
   m_TagString: Seeker
@@ -1300,6 +1301,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &296671016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296671012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &304614707
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1772,7 @@ GameObject:
   - component: {fileID: 393182901}
   - component: {fileID: 393182903}
   - component: {fileID: 393182902}
+  - component: {fileID: 393182904}
   m_Layer: 0
   m_Name: IA (4)
   m_TagString: Untagged
@@ -1802,6 +1826,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &393182904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393182900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &399681031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,6 +2454,7 @@ GameObject:
   - component: {fileID: 540984610}
   - component: {fileID: 540984612}
   - component: {fileID: 540984611}
+  - component: {fileID: 540984613}
   m_Layer: 0
   m_Name: IA (4)
   m_TagString: Chaser
@@ -2461,6 +2508,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &540984613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540984609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &545227979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2548,6 +2617,7 @@ GameObject:
   - component: {fileID: 547996648}
   - component: {fileID: 547996650}
   - component: {fileID: 547996649}
+  - component: {fileID: 547996651}
   m_Layer: 0
   m_Name: IA (3)
   m_TagString: Beater
@@ -2601,6 +2671,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &547996651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547996647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &570068669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,6 +3060,7 @@ GameObject:
   - component: {fileID: 631213394}
   - component: {fileID: 631213396}
   - component: {fileID: 631213395}
+  - component: {fileID: 631213397}
   m_Layer: 0
   m_Name: IA (5)
   m_TagString: Chaser
@@ -3021,6 +3114,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &631213397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 631213393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &648320485
 GameObject:
   m_ObjectHideFlags: 0
@@ -3225,6 +3340,7 @@ GameObject:
   - component: {fileID: 683711316}
   - component: {fileID: 683711318}
   - component: {fileID: 683711317}
+  - component: {fileID: 683711319}
   m_Layer: 0
   m_Name: IA (3)
   m_TagString: Untagged
@@ -3278,6 +3394,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &683711319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683711315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &684812810
 GameObject:
   m_ObjectHideFlags: 0
@@ -3591,6 +3729,7 @@ MonoBehaviour:
   - {fileID: 1967388127}
   - {fileID: 1564741977}
   - {fileID: 1207566011}
+  team: 0
 --- !u!4 &691489310
 Transform:
   m_ObjectHideFlags: 0
@@ -5060,6 +5199,44 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.2499999
   m_Center: {x: -0.00000011920929, y: 0.00000071525574, z: 0}
+--- !u!114 &777990730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777990725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 16
+  BoostSpeed: 2
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 1
+  BoostCooldown: 10
+  stopRadius: 0
+  slowRadius: 0
+  avoidDistance: 0
+  DirectionChangingTime: 1
+--- !u!114 &777990731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777990725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ededaa00bf456ea44afad07c24a70baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrownBy: 0
+  State: 1
+  Target: {fileID: 0}
+  movement: {fileID: 777990730}
 --- !u!1 &779338492
 GameObject:
   m_ObjectHideFlags: 0
@@ -6046,7 +6223,7 @@ GameObject:
   - component: {fileID: 860779758}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6171,6 +6348,8 @@ MonoBehaviour:
   scoreTeam2: 0
   gameLength: 0
   totalTime: 480
+  teamFirst: 1
+  teamSecond: 0
 --- !u!1 &865756119
 GameObject:
   m_ObjectHideFlags: 0
@@ -6400,6 +6579,7 @@ GameObject:
   - component: {fileID: 925165792}
   - component: {fileID: 925165794}
   - component: {fileID: 925165793}
+  - component: {fileID: 925165795}
   m_Layer: 0
   m_Name: IA (1)
   m_TagString: Untagged
@@ -6453,6 +6633,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &925165795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925165791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &929554630
 GameObject:
   m_ObjectHideFlags: 0
@@ -6751,6 +6953,44 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &949497482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949497477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ededaa00bf456ea44afad07c24a70baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrownBy: 0
+  State: 1
+  Target: {fileID: 0}
+  movement: {fileID: 949497483}
+--- !u!114 &949497483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 949497477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 16
+  BoostSpeed: 2
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 1
+  BoostCooldown: 10
+  stopRadius: 0
+  slowRadius: 0
+  avoidDistance: 0
+  DirectionChangingTime: 1
 --- !u!1 &953701777
 GameObject:
   m_ObjectHideFlags: 0
@@ -7112,6 +7352,7 @@ GameObject:
   - component: {fileID: 1001669630}
   - component: {fileID: 1001669632}
   - component: {fileID: 1001669631}
+  - component: {fileID: 1001669633}
   m_Layer: 0
   m_Name: IA (2)
   m_TagString: Untagged
@@ -7165,6 +7406,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &1001669633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001669629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &1023360416
 GameObject:
   m_ObjectHideFlags: 0
@@ -8360,6 +8623,7 @@ GameObject:
   - component: {fileID: 1206853630}
   - component: {fileID: 1206853632}
   - component: {fileID: 1206853631}
+  - component: {fileID: 1206853633}
   m_Layer: 0
   m_Name: IA
   m_TagString: Keeper
@@ -8413,6 +8677,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &1206853633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206853629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &1207566010
 GameObject:
   m_ObjectHideFlags: 0
@@ -8455,6 +8741,7 @@ GameObject:
   - component: {fileID: 1216491105}
   - component: {fileID: 1216491107}
   - component: {fileID: 1216491106}
+  - component: {fileID: 1216491108}
   m_Layer: 0
   m_Name: IA (2)
   m_TagString: Beater
@@ -8508,6 +8795,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &1216491108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1216491104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &1224946518
 GameObject:
   m_ObjectHideFlags: 0
@@ -8694,6 +9003,7 @@ MonoBehaviour:
   - {fileID: 511482343}
   - {fileID: 1604119261}
   - {fileID: 1106473203}
+  team: 0
 --- !u!114 &1228481991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10362,6 +10672,7 @@ GameObject:
   - component: {fileID: 1540536914}
   - component: {fileID: 1540536916}
   - component: {fileID: 1540536915}
+  - component: {fileID: 1540536917}
   m_Layer: 0
   m_Name: IA
   m_TagString: Untagged
@@ -10415,6 +10726,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &1540536917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540536913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &1554282566
 GameObject:
   m_ObjectHideFlags: 0
@@ -12403,6 +12736,7 @@ GameObject:
   - component: {fileID: 1889501301}
   - component: {fileID: 1889501303}
   - component: {fileID: 1889501302}
+  - component: {fileID: 1889501304}
   m_Layer: 0
   m_Name: IA (5)
   m_TagString: Untagged
@@ -12456,6 +12790,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &1889501304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889501300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &1893550619 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2317808190375137120, guid: 3daa0b1d6eb83ab4990b5bbbbfde33d5, type: 3}
@@ -12907,6 +13263,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoManager: {fileID: 860779758}
+  movement: {fileID: 1939049950}
+  boostRadius: 10
+--- !u!114 &1939049950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939049946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.4
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 3
+  BoostCooldown: 5
+  stopRadius: 1
+  slowRadius: 4
+  avoidDistance: 4
+  DirectionChangingTime: 1
 --- !u!1 &1951201071
 GameObject:
   m_ObjectHideFlags: 0
@@ -13642,6 +14022,7 @@ GameObject:
   - component: {fileID: 2064804409}
   - component: {fileID: 2064804411}
   - component: {fileID: 2064804410}
+  - component: {fileID: 2064804412}
   m_Layer: 0
   m_Name: IA (6)
   m_TagString: Chaser
@@ -13695,6 +14076,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &2064804412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064804408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1001 &2066884111
 PrefabInstance:
   m_ObjectHideFlags: 0

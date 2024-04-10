@@ -37,8 +37,8 @@ public class InfoManager : MonoBehaviour
     public float gameLength = 0;
     public float totalTime = 480;
     private string classPlayer = "Seeker";
-    private Teams teamFirst = Teams.Slytherin;
-    private Teams teamSecond = Teams.Gryffindor;
+    public Teams teamFirst = Teams.Slytherin;
+    public Teams teamSecond = Teams.Gryffindor;
     private bool gameEnded = false;
     private bool midGame = false;
 
@@ -48,7 +48,7 @@ public class InfoManager : MonoBehaviour
         classPlayer = PlayerPrefs.GetString("PlayerClass");
         SetBothTeams();
         classText.text = "Class: " + classPlayer;
-        scoreText.text = teamFirst.ToString() + ": " + scoreTeam1 + " - " + scoreTeam2 + " : " + teamSecond.ToString();
+        scoreText.text = teamFirst + ": " + scoreTeam1 + " - " + scoreTeam2 + " : " + teamSecond;
     }
 
     private void SetBothTeams()

@@ -5,20 +5,22 @@ using UnityEngine;
 public class IAChaserAgent : IAAgent
 {
     Quaffle currentQuaffle;
-    public float catchingDistance;
-    public float throwingDistance;
+    public float catchingDistance = 3;
+    public float throwingDistance = 30;
     private bool hasQuaffle;
     private Transform oppositeGoal;
     
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         oppositeGoal = getOppositeGoal();
     }
 
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         if (hasQuaffle)
         {
             movement.Arrive();

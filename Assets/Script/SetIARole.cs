@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SetIARole : MonoBehaviour
@@ -17,13 +18,18 @@ public class SetIARole : MonoBehaviour
     private int seeker = 1;
     private int beater = 2;
     private int chaser = 3;
+
+    public InfoManager.Teams team;
     // Start is called before the first frame update
     void Start()
     {
+        var manager = GameObject.FindGameObjectWithTag("GameController").GetComponent<InfoManager>();
         var BeatersPosition = BeaterPositions;
         var ChasersPositions = ChaserPosition;
+        team = manager.teamSecond;
         if (Player != null)
         {
+            team = manager.teamFirst;
             playerClass = PlayerPrefs.GetString("PlayerClass");
             switch (playerClass)
             {
@@ -68,12 +74,18 @@ public class SetIARole : MonoBehaviour
                 child.tag = "Keeper";
                 GiveHeadProtection(child.transform.GetChild(0));
                 child.position = KeeperPosition.position;
+                var ia = child.AddComponent<IAKeeperAgent>();
+                ia.team = team;
+                ia.type = IAAgent.AgentType.Keeper;
                 keeper -= 1;
             }
             else if (seeker > 0) {
                 child.tag = "Seeker";
                 GiveGoggles(child.transform.GetChild(0));
                 child.position = SeekerPosition.position;
+                var ia = child.AddComponent<IASeekerAgent>();
+                ia.team = team;
+                ia.type = IAAgent.AgentType.Seeker;
                 seeker -= 1;
             }
             else if (beater > 0) {
@@ -81,12 +93,18 @@ public class SetIARole : MonoBehaviour
                 GiveBat(child.transform.GetChild(0));
                 child.position = BeatersPosition[0].position;
                 BeatersPosition = BeatersPosition[1..];
+                var ia = child.AddComponent<IABeaterAgent>();
+                ia.team = team;
+                ia.type = IAAgent.AgentType.Beater;
                 beater -= 1;
             }
             else if (chaser > 0) {
                 child.tag = "Chaser";
                 child.position = ChasersPositions[0].position;
                 ChasersPositions = ChasersPositions[1..];
+                var ia = child.AddComponent<IAChaserAgent>();
+                ia.team = team;
+                ia.type = IAAgent.AgentType.Chaser;
                 chaser -= 1;
             }
         }
