@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private bool canPickUpBall = true;
     private Animator animator;
     
+    
     void Start()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
@@ -54,7 +55,7 @@ public class Player : MonoBehaviour
                 break;
             case "Seeker":
                 playerClass = PlayerClass.Seeker;
-                gameObject.tag = "Seeker";
+                gameObject.tag = "See   ker";
                 break;
             case "Chaser":
                 playerClass = PlayerClass.Chaser;
@@ -84,10 +85,10 @@ public class Player : MonoBehaviour
             // If the player press space bar, the player will jump
             if (Input.GetKey(KeyCode.Space)) {
                 print("hello");
-                rb.AddForce(Vector3.up * 2, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * moveSpeed, ForceMode.Impulse);
             }
             if (Input.GetKey(KeyCode.A)) {
-                rb.AddForce(Vector3.down * 2, ForceMode.Impulse);
+                rb.AddForce(Vector3.down * moveSpeed, ForceMode.Impulse);
             }
         }
     }

@@ -9,6 +9,17 @@ public class GoldenSnitch : MonoBehaviour
     public IA3DMovement movement;
     public float boostRadius;
 
+    void Start()
+    {
+        GameObject particleSystem = transform.GetChild(0).gameObject;
+        string playerClass = PlayerPrefs.GetString("PlayerClass");
+        if (playerClass == "Seeker") {
+            particleSystem.SetActive(true);
+        } else {
+            particleSystem.SetActive(false);
+        }
+    }
+
     void Update()
     {
         var closestChaser = getClosestChaser();

@@ -16,6 +16,13 @@ public class Quaffle : MonoBehaviour
     {
         startGame();
         rb = GetComponent<Rigidbody>();
+        GameObject particleSystem = transform.GetChild(1).gameObject;
+        string playerClassPref = PlayerPrefs.GetString("PlayerClass");
+        if (playerClassPref ==  "Chaser" || playerClassPref == "Keeper") {
+            particleSystem.SetActive(true);
+        } else {
+            particleSystem.SetActive(false);
+        }
     }
 
     // Update is called once per frame

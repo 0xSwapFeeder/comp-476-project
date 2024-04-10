@@ -19,7 +19,15 @@ public class Bludger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject particleSystem = transform.GetChild(0).gameObject;
+        string playerClass = PlayerPrefs.GetString("PlayerClass");
+        if (playerClass == "Beater") {
+            particleSystem.SetActive(true);
+        } else {
+            particleSystem.SetActive(false);
+        }
         
+
     }
     
     public void Throw(Transform target, float force, InfoManager.Teams team)

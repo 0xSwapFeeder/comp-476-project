@@ -21,10 +21,10 @@ public class AssignColorTeam : MonoBehaviour
                 color = gameObject.CompareTag("TeamPlayer") ? Gryffindor : Slytherin;
                 break;
             case "Hufflepuff":
-                color = gameObject.CompareTag("TeamPlayer") ? Ravenclaw : Hufflepuff;
+                color = gameObject.CompareTag("TeamPlayer") ? Hufflepuff : Ravenclaw;
                 break;
             case "Ravenclaw":
-                color = gameObject.CompareTag("TeamPlayer") ? Hufflepuff : Ravenclaw;
+                color = gameObject.CompareTag("TeamPlayer") ? Ravenclaw : Hufflepuff;
                 break;
         }
         AssignColorToChilds(color);
