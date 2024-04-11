@@ -34,7 +34,6 @@ public class IAChaserAgent : IAAgent
         currentQuaffle = GameObject.FindGameObjectWithTag("Quaffle").GetComponent<Quaffle>();
         movement.Target = currentQuaffle.transform;
         movement.Pursue();
-        Debug.Log("Distance to quaffle: " + Vector3.Distance(transform.position, currentQuaffle.transform.position));
         if (Vector3.Distance(transform.position, currentQuaffle.transform.position) < catchingDistance && currentQuaffle.transform.parent == null)
         {
             Debug.Log("Picking up quaffle");

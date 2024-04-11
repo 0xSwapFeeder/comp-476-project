@@ -2634,7 +2634,7 @@ GameObject:
   - component: {fileID: 393182904}
   m_Layer: 0
   m_Name: IA (4)
-  m_TagString: Untagged
+  m_TagString: Chaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4377,7 +4377,7 @@ GameObject:
   - component: {fileID: 683711319}
   m_Layer: 0
   m_Name: IA (3)
-  m_TagString: Untagged
+  m_TagString: Beater
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6620,15 +6620,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15147
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15147
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15147
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6636,7 +6636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.1
+      value: -6.56
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6669,6 +6669,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -17908,7 +17912,7 @@ GameObject:
   - component: {fileID: 925165795}
   m_Layer: 0
   m_Name: IA (1)
-  m_TagString: Untagged
+  m_TagString: Seeker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18176,15 +18180,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15147
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15147
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15147
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18192,7 +18196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10.36
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18225,6 +18229,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -18816,7 +18824,7 @@ GameObject:
   - component: {fileID: 1001669633}
   m_Layer: 0
   m_Name: IA (2)
-  m_TagString: Untagged
+  m_TagString: Beater
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27921,7 +27929,7 @@ GameObject:
   - component: {fileID: 1540536917}
   m_Layer: 0
   m_Name: IA
-  m_TagString: Untagged
+  m_TagString: Keeper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30734,7 +30742,7 @@ GameObject:
   - component: {fileID: 1889501304}
   m_Layer: 0
   m_Name: IA (5)
-  m_TagString: Untagged
+  m_TagString: Chaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33808,7 +33816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1999421129722909587, guid: 039fdc6798a53d348950145e32960c1d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: -3.85
       objectReference: {fileID: 0}
     - target: {fileID: 1999421129722909587, guid: 039fdc6798a53d348950145e32960c1d, type: 3}
       propertyPath: m_LocalPosition.z

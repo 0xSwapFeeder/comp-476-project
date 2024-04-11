@@ -30,6 +30,9 @@ public class IA3DMovement : MonoBehaviour
     private bool asToStop;
     private float distanceFromTarget;
     private bool isChangingTarget;
+    private float stunDuration = 3;
+    private float stunTime;
+    private bool isStunned = false;
     
     private float minYPosition = -12;
     private float maxYPosition = 18;
@@ -57,6 +60,20 @@ public class IA3DMovement : MonoBehaviour
     
     private void Update()
     {
+        if (isStunned)
+        {
+            stunTime += Time.deltaTime;
+            if (stunTime >= stunDuration)
+            {
+                isStunned = false;
+                stunTime = 0;
+            }
+            Velocity = Vector3.zero;
+            currentVelocity = Vector3.zero;
+            // Make the player rotate on himself
+            transform.Rotate(Vector3.up, 100 * Time.deltaTime);
+            return;
+        }
         Velocity.Normalize();
         if (asToStop)
         {
@@ -232,5 +249,28 @@ public class IA3DMovement : MonoBehaviour
         if (isBoosting || boostingOnCooldown)
             return;
         isBoosting = true;
+    }
+
+    void Stun()
+    {
+        if (isStunned)
+            return;
+        isStunned = true;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        // stun the player if it hits a wall or another player if the player is slower than the other player
+        if (collision.gameObject.CompareTag("Wall"))
+            Stun();
+        var otherAgent = collision.gameObject.GetComponent<IAAgent>();
+        if (otherAgent != null)
+        {
+            var otherSpeed = otherAgent.GetComponent<IA3DMovement>().currentVelocity.magnitude;
+            if ( otherSpeed > currentVelocity.magnitude)
+                Stun();
+            Debug.Log("Collision: " + collision.gameObject.tag);
+        }
+        
     }
 }
