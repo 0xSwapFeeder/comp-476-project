@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public class IA3DMovement : MonoBehaviour
@@ -29,6 +30,17 @@ public class IA3DMovement : MonoBehaviour
     private bool asToStop;
     private float distanceFromTarget;
     private bool isChangingTarget;
+    
+    private float minYPosition = -12;
+    private float maxYPosition = 18;
+    
+    private float minXPosition = -50;
+    private float maxXPosition = 40;
+    
+    private float minZPosition = -18;
+    private float maxZPosition = 24;
+
+    private Vector3 center = new (-4, -6, 8);
 
     private void CheckSuddenDirectionChange()
     {
@@ -65,7 +77,8 @@ public class IA3DMovement : MonoBehaviour
         ChangingDirection();
         Vector3 newRotation = transform.rotation.eulerAngles;
         newRotation.x = 0;
-        transform.LookAt(transform.position + Velocity);
+        
+        transform.rotation = Quaternion.Euler(newRotation);
     }
 
     private void getNeighbours()
@@ -181,6 +194,13 @@ public class IA3DMovement : MonoBehaviour
         if (!currentObstacle)
             return;
         Evade(currentObstacle);
+        // if behind terrain limits go to the center
+        if (transform.position.y < minYPosition || transform.position.y > maxYPosition
+            || transform.position.x < minXPosition || transform.position.x > maxXPosition
+            || transform.position.z < minZPosition || transform.position.z > maxZPosition)
+        {
+            Seek(center);
+        }
     }
 
 
