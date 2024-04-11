@@ -133,7 +133,9 @@ public class Player : MonoBehaviour
             }
         }
         if (collision.gameObject.CompareTag("Bludger") && playerClass == PlayerClass.Beater) {
-            Debug.Log("Bludger hit");
+            if (Input.GetMouseButton(0)) {
+                collision.gameObject.GetComponent<Bludger>().Throw(gameObject.transform, 10, team);
+            }
         }
         StartCoroutine(HandleCollision());
     }
