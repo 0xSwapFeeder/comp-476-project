@@ -11,6 +11,7 @@ public class Quaffle : MonoBehaviour
     public Vector3 positionSpawn;
     private readonly float maxHeight = 20f;
     private readonly float minHeight = -8f;
+    public float maxBounceSpeed = 10;
     private Rigidbody rb;
     void Start()
     {
@@ -24,10 +25,20 @@ public class Quaffle : MonoBehaviour
         if (playerToFollow != null) {
             transform.localPosition = new Vector3(0.8f, 0, 1f);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        } else if (transform.position.y >= maxHeight) {
-            rb.AddForce(Vector3.down * 5, ForceMode.Impulse);
-        } else if (transform.position.y <= minHeight) {
-            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        } else if (transform.position.y > maxHeight) {
+            float speed = (float)Mathf.Abs((float)rb.velocity.y) * 1.02f;
+            if (speed > maxBounceSpeed)
+                speed = maxBounceSpeed;
+
+            rb.velocity = new Vector3(rb.velocity.x, -speed, rb.velocity.z);
+            transform.position.Set(transform.position.x, maxHeight, transform.position.z);
+        } else if (transform.position.y < minHeight) {
+            float speed = (float)Mathf.Abs((float)rb.velocity.y) * 1.02f;
+            if (speed > maxBounceSpeed)
+                speed = maxBounceSpeed;
+
+            rb.velocity = new Vector3(rb.velocity.x, speed, rb.velocity.z);
+            transform.position.Set(transform.position.x, minHeight, transform.position.z);
         }
     }
 
@@ -53,9 +64,12 @@ public class Quaffle : MonoBehaviour
             infoManager.scoreTeam1 += 10;
             startGame();
         }
-        if (collision.gameObject.CompareTag("GoalSecond")) {
+        else if (collision.gameObject.CompareTag("GoalSecond")) {
             infoManager.scoreTeam2 += 10;
             startGame();
+        } else {
+            Debug.Log("Collision"  + "  -  " + (Time.time * 1000));
+            Debug.Log(collision.gameObject.tag  + "  -  " + (Time.time * 1000));
         }
     }
 

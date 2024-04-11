@@ -77,6 +77,7 @@ public class Player : MonoBehaviour
             Vector3 newRotation = transform.rotation.eulerAngles;
             newRotation.y += turnX;
             newRotation.z -= turnY;
+            newRotation.x = 0;
 
             transform.rotation = Quaternion.Euler(newRotation);
         }
@@ -88,7 +89,15 @@ public class Player : MonoBehaviour
 
             float verticalInput = Input.GetAxis("Vertical");
             float horizontalInput = Input.GetAxis("Horizontal");
-            Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0f, verticalInput).normalized);   
+            float UpDownInput = 0f;
+            if (Input.GetKey(KeyCode.Space)) {
+                UpDownInput += 1f;
+            }
+            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.C)) {
+                UpDownInput += -1f;
+            }
+            Debug.Log(horizontalInput);
+            Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, UpDownInput, verticalInput).normalized);   
             rb.velocity = moveDirection * moveSpeed;
 
             if (Input.GetMouseButtonDown(0) && isHoldingBall) {

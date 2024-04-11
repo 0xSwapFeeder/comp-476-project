@@ -59,10 +59,30 @@ public class IA3DMovement : MonoBehaviour
         else
             Velocity *= Speed;
         UpdateBoost();
+        getNeighbours();
         transform.position += Velocity * Time.deltaTime;
         CheckSuddenDirectionChange();
         ChangingDirection();
-        Velocity = Vector3.zero;
+        Vector3 newRotation = transform.rotation.eulerAngles;
+        newRotation.x = 0;
+
+        transform.rotation = UnityEngine.Quaternion.Euler(newRotation);
+    }
+
+    private void getNeighbours()
+    {
+        Collider[] aiColliders = Physics.OverlapSphere(transform.position, 10);
+        int sameTeamCount = 0;
+
+        foreach (Collider collider in aiColliders)
+        {
+            IAAgent aiMovement = collider.GetComponent<IAAgent>();
+            if (aiMovement != null && aiMovement != this)
+                if (aiMovement.gameObject.tag == gameObject.tag)
+                    sameTeamCount++;
+        }
+
+        Velocity *= 1f + (sameTeamCount * 0.03f);
     }
 
     private void ChangingDirection()
@@ -174,6 +194,8 @@ public class IA3DMovement : MonoBehaviour
         var size = Physics.OverlapSphereNonAlloc(transform.position, avoidDistance, obstacles); 
         foreach (var obstacle in obstacles)
         {
+            // if (gameObject.tag == "Chasser" && obstacle.CompareTag("Quaffle"))
+            //     Debug.Log("ijdijsd" + "  " + gameObject.tag);
             size--;
             if (size < 0)
                 break;
