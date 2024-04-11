@@ -7,19 +7,22 @@ public class IABeaterAgent : IAAgent
 {
     Bludger currentBludger;
     
-    public float catchingDistance;
-    public float throwingDistance;
-    public float throwingForce;
-    
+    public float catchingDistance = 3;
+    public float throwingDistance = 20;
+    public float throwingForce = 10;
+
+    private List<Bludger> bludgers;
     // Start is called before the first frame update
     void Start()
     {
-        
+        base.Start();
+        bludgers = getBludgers();
     }
 
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         if (currentBludger != null)
             ThrowBludger();
         else if (!hasToDefendTeamFromIncomingBludger())
@@ -61,8 +64,16 @@ public class IABeaterAgent : IAAgent
     
     void DefendTeamFromIncomingBludger()
     {
-        var bludgers = getBludgers().Where( b => b.State == Bludger.BludgerState.Thrown && b.thrownBy != team).ToList();
-        var closestBludger = bludgers.Aggregate((current, next) => Vector3.Distance(transform.position, current.transform.position) < Vector3.Distance(transform.position, next.transform.position) ? current : next);
+        var b = bludgers.Where(b => b.State == Bludger.BludgerState.Thrown && b.thrownBy != team).ToList();
+        if (b.Count == 0)
+            return;
+        if (b.Count == 1)
+        {
+            movement.Target = b[0].transform;
+            movement.Pursue();
+            return;
+        }
+        var closestBludger = Vector3.Distance(transform.position, b[0].transform.position) < Vector3.Distance(transform.position, b[1].transform.position) ? b[0]: b[1];
         
         movement.Target = closestBludger.transform;
         movement.Pursue();
@@ -70,8 +81,6 @@ public class IABeaterAgent : IAAgent
 
     bool hasToDefendTeamFromIncomingBludger()
     {
-        var bludgers = getBludgers();
-
         return bludgers.Any(b => b.State == Bludger.BludgerState.Thrown && b.thrownBy != team) && currentBludger == null;
     }
     

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class IAKeeperAgent : IAAgent
 {
-    public float distanceToGoal;
-    public float defenseDistance;
-    public float catchingDistance;
+    public float distanceToGoal = 20;
+    public float defenseDistance = 30;
+    public float catchingDistance = 3;
 
     
     private Quaffle quaffle;
@@ -16,6 +16,7 @@ public class IAKeeperAgent : IAAgent
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         var goal1 = GameObject.FindGameObjectWithTag("GoalFirst");
         var goal2 = GameObject.FindGameObjectWithTag("GoalSecond");
         goal = Vector3.Distance(transform.position, goal1.transform.position) < Vector3.Distance(transform.position, goal2.transform.position) ? goal1.transform : goal2.transform;
@@ -24,6 +25,7 @@ public class IAKeeperAgent : IAAgent
 
     void Update()
     {
+        base.Update();
         setClosestQuaffle();
         if (quaffle != null && Vector3.Distance(transform.position, quaffle.transform.position) < defenseDistance)
         {

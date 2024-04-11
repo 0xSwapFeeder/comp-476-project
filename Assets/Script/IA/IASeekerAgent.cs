@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class IASeekerAgent : IAAgent
 {
-    public float boostRadius;
-    public float catchRadius;
+    public float boostRadius = 10;
+    public float catchRadius = 3;
     private GoldenSnitch goldenSnitch;
     
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         goldenSnitch = GameObject.FindGameObjectWithTag("Snitch").GetComponent<GoldenSnitch>();
         movement.Target = goldenSnitch.transform;
     }
@@ -18,6 +19,7 @@ public class IASeekerAgent : IAAgent
     // Update is called once per frame
     void Update()
     {
+        base.Update();
         movement.Pursue();
         if (Vector3.Distance(transform.position, goldenSnitch.transform.position) < boostRadius)
             movement.Boost();

@@ -11,6 +11,7 @@ public class Quaffle : MonoBehaviour
     public Vector3 positionSpawn;
     private readonly float maxHeight = 20f;
     private readonly float minHeight = -8f;
+    public float maxBounceSpeed = 10;
     private Rigidbody rb;
     AudioManager audioManager;
     void Start()
@@ -25,6 +26,7 @@ public class Quaffle : MonoBehaviour
             particleSystem.SetActive(false);
         }
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
+        transform.SetParent(null);
     }
 
     // Update is called once per frame
@@ -33,10 +35,20 @@ public class Quaffle : MonoBehaviour
         if (playerToFollow != null) {
             transform.localPosition = new Vector3(0.8f, 0, 1f);
             transform.localRotation = Quaternion.Euler(0, 0, 0);
-        } else if (transform.position.y >= maxHeight) {
-            rb.AddForce(Vector3.down * 5, ForceMode.Impulse);
-        } else if (transform.position.y <= minHeight) {
-            rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        } else if (transform.position.y > maxHeight) {
+            float speed = (float)Mathf.Abs((float)rb.velocity.y) * 1.02f;
+            if (speed > maxBounceSpeed)
+                speed = maxBounceSpeed;
+
+            rb.velocity = new Vector3(rb.velocity.x, -speed, rb.velocity.z);
+            transform.position.Set(transform.position.x, maxHeight, transform.position.z);
+        } else if (transform.position.y < minHeight) {
+            float speed = (float)Mathf.Abs((float)rb.velocity.y) * 1.02f;
+            if (speed > maxBounceSpeed)
+                speed = maxBounceSpeed;
+
+            rb.velocity = new Vector3(rb.velocity.x, speed, rb.velocity.z);
+            transform.position.Set(transform.position.x, minHeight, transform.position.z);
         }
     }
 
@@ -52,7 +64,7 @@ public class Quaffle : MonoBehaviour
     public void GetThrown(Transform direction) {
         transform.SetParent(null);
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().AddForce(direction.forward * 10, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(direction.forward * 100, ForceMode.Impulse);
         GetComponent<Collider>().enabled = true;
         playerToFollow = null;
     }

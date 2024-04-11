@@ -59,10 +59,29 @@ public class IA3DMovement : MonoBehaviour
         else
             Velocity *= Speed;
         UpdateBoost();
+        getNeighbours();
         transform.position += Velocity * Time.deltaTime;
         CheckSuddenDirectionChange();
         ChangingDirection();
-        Velocity = Vector3.zero;
+        Vector3 newRotation = transform.rotation.eulerAngles;
+        newRotation.x = 0;
+        transform.LookAt(transform.position + Velocity);
+    }
+
+    private void getNeighbours()
+    {
+        Collider[] aiColliders = Physics.OverlapSphere(transform.position, 10);
+        int sameTeamCount = 0;
+
+        foreach (Collider collider in aiColliders)
+        {
+            IAAgent aiMovement = collider.GetComponent<IAAgent>();
+            if (aiMovement != null && aiMovement != this)
+                if (aiMovement.gameObject.tag == gameObject.tag)
+                    sameTeamCount++;
+        }
+
+        Velocity *= 1f + (sameTeamCount * 0.03f);
     }
 
     private void ChangingDirection()
@@ -177,7 +196,7 @@ public class IA3DMovement : MonoBehaviour
             size--;
             if (size < 0)
                 break;
-            if (obstacle.GetInstanceID() == GetInstanceID() || obstacle.name == name)
+            if (!obstacle.gameObject.CompareTag("Wall"))
                 continue;
             if (!currentObstacle.IsUnityNull() && Vector3.Distance(obstacle.transform.position, transform.position)
             < Vector3.Distance(currentObstacle.position, transform.position))

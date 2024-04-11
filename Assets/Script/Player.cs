@@ -15,10 +15,10 @@ public class Player : MonoBehaviour
     private PlayerClass playerClass;
     private Teams team = Teams.Gryffindor;
     [Header("Player Settings")]
-    public float moveSpeed = 7f;
-    public float rotationSpeed = 5f;
+    public float moveSpeed = 20f;
+    public float rotationSpeed = 12f;
     public Camera playerCamera;
-    public float sensitivity = 1.5f;
+    public float sensitivity = 2f;
     private bool isHoldingBall = false;
     private GameObject ballHolding;
     private bool isControlEnabled = true;
@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
             Vector3 newRotation = transform.rotation.eulerAngles;
             newRotation.y += turnX;
             newRotation.z -= turnY;
+            newRotation.x = 0;
 
             transform.rotation = Quaternion.Euler(newRotation);
             // If the player press space bar, the player will jump
@@ -99,7 +100,14 @@ public class Player : MonoBehaviour
 
             float verticalInput = Input.GetAxis("Vertical");
             float horizontalInput = Input.GetAxis("Horizontal");
-            Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, 0f, verticalInput).normalized);   
+            float UpDownInput = 0f;
+            if (Input.GetKey(KeyCode.Space)) {
+                UpDownInput += 1f;
+            }
+            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.C)) {
+                UpDownInput += -1f;
+            }
+            Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, UpDownInput, verticalInput).normalized);   
             rb.velocity = moveDirection * moveSpeed;
 
             if (Input.GetMouseButtonDown(0) && isHoldingBall) {
