@@ -101,17 +101,57 @@ public class IA3DMovement : MonoBehaviour
     private void getNeighbours()
     {
         Collider[] aiColliders = Physics.OverlapSphere(transform.position, 10);
-        int sameTeamCount = 0;
+        int[] sameTeamCount = new int[4];
+        int[] enemyTeamCount = new int[4];
 
-        foreach (Collider collider in aiColliders)
-        {
-            IAAgent aiMovement = collider.GetComponent<IAAgent>();
-            if (aiMovement != null && aiMovement != this)
-                if (aiMovement.gameObject.tag == gameObject.tag)
-                    sameTeamCount++;
+        foreach (Collider collider in aiColliders) {
+            IAAgent player = collider.GetComponent<IAAgent>();
+            if (player != null && player != this) {
+                if (player.team == gameObject.GetComponent<IAAgent>().team)
+                    sameTeamCount[(int)player.type]++;
+                else
+                    enemyTeamCount[(int)player.type]++;
+            }
+        }
+        float speedBoost = 1;
+
+        for (int i = 0; i < 4; i++) {
+            if (sameTeamCount[i] > 0) {
+                switch ((IAAgent.AgentType)i) {
+                    case IAAgent.AgentType.Keeper:
+                        speedBoost += sameTeamCount[i] * 0.06f;
+                        break;
+                    case IAAgent.AgentType.Seeker:
+                        speedBoost += 0.1f;
+                        break;
+                    case IAAgent.AgentType.Chaser:
+                        speedBoost += sameTeamCount[i] * 0.06f;
+                        break;
+                    case IAAgent.AgentType.Beater:
+                        speedBoost += 0.1f;
+                        break;
+                }
+            }
+            if (enemyTeamCount[i] > 0) {
+                switch ((IAAgent.AgentType)i) {
+                    case IAAgent.AgentType.Keeper:
+                        speedBoost += sameTeamCount[i] * 0.06f;
+                        break;
+                    case IAAgent.AgentType.Seeker:
+                        speedBoost += 0.1f;
+                        break;
+                    case IAAgent.AgentType.Chaser:
+                        speedBoost -= sameTeamCount[i] * 0.06f;
+                        break;
+                    case IAAgent.AgentType.Beater:
+                        speedBoost += 0.06f;
+                        break;
+                }
+            }
         }
 
-        Velocity *= 1f + (sameTeamCount * 0.03f);
+
+        Velocity *= speedBoost;
     }
 
     private void ChangingDirection()
