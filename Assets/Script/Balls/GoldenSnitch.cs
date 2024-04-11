@@ -11,6 +11,7 @@ public class GoldenSnitch : MonoBehaviour
 
     void Start()
     {
+        movement = GetComponent<IA3DMovement>();
         GameObject particleSystem = transform.GetChild(0).gameObject;
         string playerClass = PlayerPrefs.GetString("PlayerClass");
         if (playerClass == "Seeker") {

@@ -17568,7 +17568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8633155e370d34fa5c703bd68d971e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalText: {fileID: 1396296917}
+  goalText: {fileID: 0}
   timerText: {fileID: 1383337121}
   classText: {fileID: 694651181}
   scoreText: {fileID: 722894536}
@@ -17583,7 +17583,7 @@ MonoBehaviour:
   firstTeamIa: {fileID: 691489309}
   secondTeamIa: {fileID: 1228481990}
   quaffle: {fileID: 1834734048}
-  goalObject: {fileID: 1396296915}
+  goalObject: {fileID: 0}
   GryffindorFlags: {fileID: 53835937}
   SlytherinFlags: {fileID: 1224946518}
   HufflepuffFlags: {fileID: 1574645248}
@@ -18589,10 +18589,10 @@ MonoBehaviour:
   target: {fileID: 1733182018}
   pLerp: 0.1
   rLerp: 0.09
-  arrowLeft: {fileID: 1705507192}
-  arrowRight: {fileID: 1518159651}
-  arrowUp: {fileID: 979567354}
-  arrowDown: {fileID: 1917686205}
+  arrowLeft: {fileID: 0}
+  arrowRight: {fileID: 0}
+  arrowUp: {fileID: 0}
+  arrowDown: {fileID: 0}
   quaffle: {fileID: 1543816853}
   snitch: {fileID: 813170409}
   bludgerOne: {fileID: 777990725}
@@ -18867,6 +18867,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
+--- !u!114 &1001669633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001669629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 10
+  BoostSpeed: 1.3
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 2
+  slowRadius: 10
+  avoidDistance: 5
+  DirectionChangingTime: 1
 --- !u!1 &1007610008
 GameObject:
   m_ObjectHideFlags: 0
@@ -18969,28 +18991,6 @@ MonoBehaviour:
   - {fileID: 1812686543}
   - {fileID: 1812686542}
   - {fileID: 1812686545}
---- !u!114 &1001669633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001669629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Target: {fileID: 0}
-  Speed: 10
-  BoostSpeed: 1.3
-  Velocity: {x: 0, y: 0, z: 0}
-  MaxBoostTime: 2
-  BoostCooldown: 2
-  stopRadius: 2
-  slowRadius: 10
-  avoidDistance: 5
-  DirectionChangingTime: 1
 --- !u!1 &1023360416
 GameObject:
   m_ObjectHideFlags: 0
@@ -19433,6 +19433,7 @@ Transform:
   - {fileID: 777990724}
   - {fileID: 543450651907503664}
   - {fileID: 949497476}
+  - {fileID: 1939049945}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19516,7 +19517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99cde473fca774241b51b51a60b3beac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
   moveSpeed: 10
   rotationSpeed: 10
   playerCamera: {fileID: 963194227}
@@ -27972,11 +27972,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5773116, y: 1.2871938, z: 0.49909544}
   m_Center: {x: -0.76802164, y: -1.245125, z: 1.2501361}
---- !u!1 &1543816853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1221757804641716521, guid: 039fdc6798a53d348950145e32960c1d, type: 3}
-  m_PrefabInstance: {fileID: 2032785418972161443}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1540536917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27999,6 +27994,11 @@ MonoBehaviour:
   slowRadius: 10
   avoidDistance: 5
   DirectionChangingTime: 1
+--- !u!1 &1543816853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1221757804641716521, guid: 039fdc6798a53d348950145e32960c1d, type: 3}
+  m_PrefabInstance: {fileID: 2032785418972161443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1554282566
 GameObject:
   m_ObjectHideFlags: 0
@@ -32245,6 +32245,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3277731964858576382, guid: 04b3c093529194c439d4d67f21ad0224, type: 3}
   m_PrefabInstance: {fileID: 2022158686}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2022158691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813170409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3456c058329add4eaee8e59aca094f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  Speed: 14
+  BoostSpeed: 1.6
+  Velocity: {x: 0, y: 0, z: 0}
+  MaxBoostTime: 2
+  BoostCooldown: 2
+  stopRadius: 1
+  slowRadius: 5
+  avoidDistance: 3
+  DirectionChangingTime: 1
 --- !u!1001 &2024469185
 PrefabInstance:
   m_ObjectHideFlags: 0
