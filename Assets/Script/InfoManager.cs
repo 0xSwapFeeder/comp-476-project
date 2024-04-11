@@ -12,28 +12,36 @@ public class InfoManager : MonoBehaviour
         Hufflepuff,
         Ravenclaw
     }
+    [Header("Texts")]
+    public TextMeshProUGUI goalText;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI classText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI midGameText;
+    [Header("Screens")]
     public GameObject ScreenDuringGame;
     public GameObject ScreenWinGryffindor;
     public GameObject ScreenWinSlytherin;
     public GameObject ScreenWinHufflepuff;
     public GameObject ScreenWinRavenclaw;
     public GameObject MidGameScreen;
+    public GameObject screenPause;
+    [Header("GameObjects")]
     public SetIARole firstTeamIa;
     public SetIARole secondTeamIa;
     public Quaffle quaffle;
+    public GameObject goalObject;
     public GameObject GryffindorFlags;
     public GameObject SlytherinFlags;
     public GameObject HufflepuffFlags;
     public GameObject RavenclawFlags;
     public Material secondHalfSkybox;
-    public GameObject screenPause;
 
+    [Header("Scores")]
     public float scoreTeam1 = 0;
     public float scoreTeam2 = 0;
+
+    [Header("Game Settings")]
     public float gameLength = 0;
     public float totalTime = 480;
     private string classPlayer = "Seeker";
@@ -196,5 +204,27 @@ public class InfoManager : MonoBehaviour
             screen.GetComponent<ScreenEndgame>().SetTeam(teamFirst, scoreTeam1);
         else
             screen.GetComponent<ScreenEndgame>().SetTeam(teamSecond, scoreTeam2);
+    }
+
+    public void GoalFirstTeam()
+    {
+        goalObject.SetActive(true);
+        goalText.text = "10 Points for " + teamFirst.ToString() + " !!";
+        scoreTeam1 += 10;
+        Invoke(nameof(HideGoalObject), 1.5f);
+
+    }
+
+    public void GoalSecondTeam()
+    {
+        goalObject.SetActive(true);
+        goalText.text = "10 Points for " + teamSecond.ToString() + " !!";
+        scoreTeam2 += 10;
+        Invoke(nameof(HideGoalObject), 1.5f);
+    }
+
+    private void HideGoalObject()
+    {
+        goalObject.SetActive(false);
     }
 }

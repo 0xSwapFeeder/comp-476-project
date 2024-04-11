@@ -13,7 +13,8 @@ public class Player : MonoBehaviour
     }
     private Rigidbody rb;
     private PlayerClass playerClass;
-    public Teams team = Teams.Gryffindor;
+    private Teams team = Teams.Gryffindor;
+    [Header("Player Settings")]
     public float moveSpeed = 7f;
     public float rotationSpeed = 5f;
     public Camera playerCamera;
@@ -84,7 +85,6 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.Euler(newRotation);
             // If the player press space bar, the player will jump
             if (Input.GetKey(KeyCode.Space)) {
-                print("hello");
                 rb.AddForce(Vector3.up * moveSpeed, ForceMode.Impulse);
             }
             if (Input.GetKey(KeyCode.A)) {
@@ -117,17 +117,17 @@ public class Player : MonoBehaviour
             isHoldingBall = false;
             StartCoroutine(WaitBeforeNextPickup());
         }
-        if (collision.gameObject.tag == "Quaffle" && canPickUpBall && (playerClass == PlayerClass.Chaser || playerClass == PlayerClass.Keeper)) {
+        if (collision.gameObject.CompareTag("Quaffle") && canPickUpBall && (playerClass == PlayerClass.Chaser || playerClass == PlayerClass.Keeper)) {
             ballHolding = collision.gameObject;
             ballHolding.GetComponent<Quaffle>().PickUp(transform);
             isHoldingBall = true;
         }
-        if (collision.gameObject.tag == "Snitch" && canPickUpBall && playerClass == PlayerClass.Seeker) {
+        if (collision.gameObject.CompareTag("Snitch") && canPickUpBall && playerClass == PlayerClass.Seeker) {
             if (Input.GetKey(KeyCode.E)) {
                 collision.gameObject.GetComponent<GoldenSnitch>().GetCatch(team);
             }
         }
-        if (collision.gameObject.tag == "Bludger" && playerClass == PlayerClass.Beater) {
+        if (collision.gameObject.CompareTag("Bludger") && playerClass == PlayerClass.Beater) {
             Debug.Log("Bludger hit");
         }
         StartCoroutine(HandleCollision());

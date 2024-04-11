@@ -7,6 +7,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI InfoText;
+    AudioManager audioManager;
+
+    void Start() 
+    {
+        audioManager = FindObjectOfType<AudioManager>();
+    }
+
     public void PlayGame() {
         // Load the next scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -66,6 +73,10 @@ public class MainMenu : MonoBehaviour
     public void SetRavenclaw() {
         PlayerPrefs.SetString("Team", "Ravenclaw");
         PlayerPrefs.Save();
+    }
+
+    public void SetVolume(float volume) {
+        audioManager.ChangeVolume(volume);
     }
 
 }

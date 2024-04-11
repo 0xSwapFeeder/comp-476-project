@@ -12,6 +12,7 @@ public class Quaffle : MonoBehaviour
     private readonly float maxHeight = 20f;
     private readonly float minHeight = -8f;
     private Rigidbody rb;
+    AudioManager audioManager;
     void Start()
     {
         startGame();
@@ -23,6 +24,7 @@ public class Quaffle : MonoBehaviour
         } else {
             particleSystem.SetActive(false);
         }
+        audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -57,12 +59,14 @@ public class Quaffle : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("GoalFirst")) {
-            infoManager.scoreTeam1 += 10;
+            infoManager.GoalFirstTeam();
             startGame();
+            audioManager.PlaySFX(audioManager.goal);
         }
         if (collision.gameObject.CompareTag("GoalSecond")) {
-            infoManager.scoreTeam2 += 10;
+            infoManager.GoalSecondTeam();
             startGame();
+            audioManager.PlaySFX(audioManager.goal);
         }
         if (collision.gameObject.CompareTag("Wall")) {
             rb.velocity = Vector3.Reflect(rb.velocity, collision.contacts[0].normal);

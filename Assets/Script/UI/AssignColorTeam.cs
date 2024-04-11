@@ -15,7 +15,7 @@ public class AssignColorTeam : MonoBehaviour
         switch (team)
         {
             case "Gryffindor":
-                color = gameObject.CompareTag("TeamPlayer") ? Slytherin : Gryffindor;
+                color = gameObject.CompareTag("TeamPlayer") ? Gryffindor : Slytherin;
                 break;
             case "Slytherin":
                 color = gameObject.CompareTag("TeamPlayer") ? Gryffindor : Slytherin;
@@ -24,7 +24,7 @@ public class AssignColorTeam : MonoBehaviour
                 color = gameObject.CompareTag("TeamPlayer") ? Hufflepuff : Ravenclaw;
                 break;
             case "Ravenclaw":
-                color = gameObject.CompareTag("TeamPlayer") ? Ravenclaw : Hufflepuff;
+                color = gameObject.CompareTag("TeamPlayer") ? Hufflepuff : Ravenclaw;
                 break;
         }
         AssignColorToChilds(color);

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    [Header("Settings")]
     public Transform target;
     public float pLerp = .02f;
     public float rLerp = .01f;
+    [Header("UI Elements")]
     public GameObject arrowLeft;
     public GameObject arrowRight;
     public GameObject arrowUp;
     public GameObject arrowDown;
+    [Header("Balls")]
     public GameObject quaffle;
     public GameObject snitch;
     public GameObject bludgerOne;
