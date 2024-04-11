@@ -77,20 +77,18 @@ public class Player : MonoBehaviour
 
             float turnY = Input.GetAxis("Mouse Y") * sensitivity;
             float turnX = Input.GetAxis("Mouse X") * sensitivity;
-
+            
+            
             Vector3 newRotation = transform.rotation.eulerAngles;
-            newRotation.y += turnX;
-            newRotation.z -= turnY;
-            newRotation.x = 0;
+            if (Input.GetMouseButton(1)) {
+                newRotation.x += turnY;
+                transform.rotation = Quaternion.Euler(newRotation);
+            } else {
+                newRotation.y += turnX;
+                newRotation.z -= turnY;
+            }
 
             transform.rotation = Quaternion.Euler(newRotation);
-            // If the player press space bar, the player will jump
-            if (Input.GetKey(KeyCode.Space)) {
-                rb.AddForce(Vector3.up * moveSpeed, ForceMode.Impulse);
-            }
-            if (Input.GetKey(KeyCode.A)) {
-                rb.AddForce(Vector3.down * moveSpeed, ForceMode.Impulse);
-            }
         }
     }
 
