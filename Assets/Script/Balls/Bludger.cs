@@ -16,7 +16,6 @@ public class Bludger : MonoBehaviour
     public Transform Target;
     public IA3DMovement movement;
     
-    // Start is called before the first frame update
     void Start()
     {
         GameObject particleSystem = transform.GetChild(0).gameObject;

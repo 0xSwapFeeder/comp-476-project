@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     private bool isControlEnabled = true;
     private bool canPickUpBall = true;
     private Animator animator;
+    public float boostSpeed = 2f;
+    public float boostDuration = 2f;
+    private bool isBoosting = false;
     
     
     void Start()
@@ -56,7 +59,7 @@ public class Player : MonoBehaviour
                 break;
             case "Seeker":
                 playerClass = PlayerClass.Seeker;
-                gameObject.tag = "See   ker";
+                gameObject.tag = "Seeker";
                 break;
             case "Chaser":
                 playerClass = PlayerClass.Chaser;
@@ -82,7 +85,6 @@ public class Player : MonoBehaviour
             Vector3 newRotation = transform.rotation.eulerAngles;
             if (Input.GetMouseButton(1)) {
                 newRotation.x += turnY;
-                transform.rotation = Quaternion.Euler(newRotation);
             } else {
                 newRotation.y += turnX;
                 newRotation.z -= turnY;
@@ -106,13 +108,17 @@ public class Player : MonoBehaviour
                 UpDownInput += -1f;
             }
             Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, UpDownInput, verticalInput).normalized);   
-            rb.velocity = moveDirection * moveSpeed;
+            float currentSpeed = isBoosting ? moveSpeed * boostSpeed : moveSpeed;
+            rb.velocity = moveDirection * currentSpeed;
 
             if (Input.GetMouseButtonDown(0) && isHoldingBall) {
                 ballHolding.GetComponent<Quaffle>().GetThrown(playerCamera.transform);
                 isHoldingBall = false;
                 StartCoroutine(WaitBeforeNextPickup());
                 animator.SetBool("Throwing", true);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftShift)) {
+                StartCoroutine(Boost());
             }
         }
     }
@@ -154,5 +160,11 @@ public class Player : MonoBehaviour
         canPickUpBall = false;
         yield return new WaitForSeconds(1f);
         canPickUpBall = true;
+    }
+
+    IEnumerator Boost() {
+        isBoosting = true;
+        yield return new WaitForSeconds(boostDuration);
+        isBoosting = false;
     }
 }
