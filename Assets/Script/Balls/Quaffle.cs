@@ -17,6 +17,7 @@ public class Quaffle : MonoBehaviour
     void Start()
     {
         startGame();
+        transform.SetParent(null);
         rb = GetComponent<Rigidbody>();
         GameObject particleSystem = transform.GetChild(1).gameObject;
         string playerClassPref = PlayerPrefs.GetString("PlayerClass");
@@ -26,7 +27,6 @@ public class Quaffle : MonoBehaviour
             particleSystem.SetActive(false);
         }
         audioManager = GameObject.FindWithTag("AudioManager").GetComponent<AudioManager>();
-        transform.SetParent(null);
     }
 
     // Update is called once per frame
@@ -57,14 +57,14 @@ public class Quaffle : MonoBehaviour
         transform.SetParent(playerToFollow);
         transform.localPosition = new Vector3(0, 0, 1);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
-        GetComponent<Rigidbody>().isKinematic = true;
+        rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
     }
 
     public void GetThrown(Transform direction) {
         transform.SetParent(null);
-        GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().AddForce(direction.forward * 100, ForceMode.Impulse);
+        rb.isKinematic = false;
+        rb.AddForce(direction.forward * 1000, ForceMode.Impulse);
         GetComponent<Collider>().enabled = true;
         playerToFollow = null;
     }

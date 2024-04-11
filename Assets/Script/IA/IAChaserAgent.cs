@@ -5,8 +5,8 @@ using UnityEngine;
 public class IAChaserAgent : IAAgent
 {
     Quaffle currentQuaffle;
-    public float catchingDistance = 2;
-    public float throwingDistance = 50;
+    public float catchingDistance = 1;
+    public float throwingDistance = 10;
     private bool hasQuaffle;
     private Transform oppositeGoal;
     
@@ -31,9 +31,10 @@ public class IAChaserAgent : IAAgent
             }
             return;
         }
-        setClosestQuaffle();
+        currentQuaffle = GameObject.FindGameObjectWithTag("Quaffle").GetComponent<Quaffle>();
         movement.Target = currentQuaffle.transform;
         movement.Pursue();
+        Debug.Log("Distance to quaffle: " + Vector3.Distance(transform.position, currentQuaffle.transform.position));
         if (Vector3.Distance(transform.position, currentQuaffle.transform.position) < catchingDistance && currentQuaffle.transform.parent == null)
         {
             Debug.Log("Picking up quaffle");
@@ -43,20 +44,6 @@ public class IAChaserAgent : IAAgent
         }
     }
     
-    void setClosestQuaffle()
-    {
-        GameObject[] quaffles = GameObject.FindGameObjectsWithTag("Quaffle");
-        float minDistance = float.MaxValue;
-        foreach (var quaffle in quaffles)
-        {
-            float distance = Vector3.Distance(transform.position, quaffle.transform.position);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                currentQuaffle = quaffle.GetComponent<Quaffle>();
-            }
-        }
-    }
     Transform getOppositeGoal()
     {
         var goal1 = GameObject.FindGameObjectWithTag("GoalFirst");

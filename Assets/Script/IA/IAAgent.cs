@@ -26,7 +26,7 @@ public class IAAgent : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-        movement.Avoid();
+        //movement.Avoid();
     }
 
     public void FlockWithSameTeamMemberType()
