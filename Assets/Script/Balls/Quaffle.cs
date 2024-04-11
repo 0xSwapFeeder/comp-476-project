@@ -88,7 +88,7 @@ public class Quaffle : MonoBehaviour
     public void startGame()
     {
         transform.position = positionSpawn;
-        Rigidbody rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 

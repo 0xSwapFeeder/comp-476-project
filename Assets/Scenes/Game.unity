@@ -17568,7 +17568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8633155e370d34fa5c703bd68d971e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goalText: {fileID: 0}
+  goalText: {fileID: 1396296917}
   timerText: {fileID: 1383337121}
   classText: {fileID: 694651181}
   scoreText: {fileID: 722894536}
@@ -17583,7 +17583,7 @@ MonoBehaviour:
   firstTeamIa: {fileID: 691489309}
   secondTeamIa: {fileID: 1228481990}
   quaffle: {fileID: 1834734048}
-  goalObject: {fileID: 0}
+  goalObject: {fileID: 1396296915}
   GryffindorFlags: {fileID: 53835937}
   SlytherinFlags: {fileID: 1224946518}
   HufflepuffFlags: {fileID: 1574645248}
@@ -18589,10 +18589,10 @@ MonoBehaviour:
   target: {fileID: 1733182018}
   pLerp: 0.1
   rLerp: 0.09
-  arrowLeft: {fileID: 0}
-  arrowRight: {fileID: 0}
-  arrowUp: {fileID: 0}
-  arrowDown: {fileID: 0}
+  arrowLeft: {fileID: 1705507192}
+  arrowRight: {fileID: 1518159651}
+  arrowUp: {fileID: 979567354}
+  arrowDown: {fileID: 1917686205}
   quaffle: {fileID: 1543816853}
   snitch: {fileID: 813170409}
   bludgerOne: {fileID: 777990725}

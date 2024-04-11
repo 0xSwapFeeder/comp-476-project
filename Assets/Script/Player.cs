@@ -123,14 +123,13 @@ public class Player : MonoBehaviour
         if (ballHolding != null) {
             ballHolding.GetComponent<Quaffle>().GetThrown(collision.transform);
             isHoldingBall = false;
-            StartCoroutine(WaitBeforeNextPickup());
         }
-        if (collision.gameObject.CompareTag("Quaffle") && canPickUpBall && (playerClass == PlayerClass.Chaser || playerClass == PlayerClass.Keeper)) {
+        if (collision.gameObject.CompareTag("Quaffle") && (playerClass == PlayerClass.Chaser || playerClass == PlayerClass.Keeper)) {
             ballHolding = collision.gameObject;
             ballHolding.GetComponent<Quaffle>().PickUp(transform);
             isHoldingBall = true;
         }
-        if (collision.gameObject.CompareTag("Snitch") && canPickUpBall && playerClass == PlayerClass.Seeker) {
+        if (collision.gameObject.CompareTag("Snitch") && playerClass == PlayerClass.Seeker) {
             if (Input.GetKey(KeyCode.E)) {
                 collision.gameObject.GetComponent<GoldenSnitch>().GetCatch(team);
             }
@@ -155,6 +154,5 @@ public class Player : MonoBehaviour
         canPickUpBall = false;
         yield return new WaitForSeconds(1f);
         canPickUpBall = true;
-        animator.SetBool("Throwing", false);
     }
 }
