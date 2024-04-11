@@ -151,6 +151,7 @@ public class InfoManager : MonoBehaviour
 
     public void SetGameEnded(Teams catchSnitchTeam)
     {
+        if (gameEnded) return;
         if (catchSnitchTeam == teamFirst)
         {
             scoreTeam1 += 30;
@@ -208,6 +209,7 @@ public class InfoManager : MonoBehaviour
 
     public void GoalFirstTeam()
     {
+        if (gameEnded) return;
         goalObject.SetActive(true);
         goalText.text = "10 Points for " + teamFirst.ToString() + " !!";
         scoreTeam1 += 10;
@@ -217,6 +219,7 @@ public class InfoManager : MonoBehaviour
 
     public void GoalSecondTeam()
     {
+        if (gameEnded) return;
         goalObject.SetActive(true);
         goalText.text = "10 Points for " + teamSecond.ToString() + " !!";
         scoreTeam2 += 10;

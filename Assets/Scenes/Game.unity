@@ -19529,6 +19529,8 @@ MonoBehaviour:
   rotationSpeed: 10
   playerCamera: {fileID: 963194227}
   sensitivity: 1
+  boostSpeed: 2
+  boostDuration: 2
 --- !u!65 &1119952158
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31281,6 +31283,10 @@ PrefabInstance:
       value: Golden snitch
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ea356802d67194444b11541fbb84b668, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea356802d67194444b11541fbb84b668, type: 3}
       propertyPath: m_TagString
       value: Snitch
       objectReference: {fileID: 0}
@@ -32199,6 +32205,14 @@ PrefabInstance:
       value: Golden snitch
       objectReference: {fileID: 0}
     - target: {fileID: 3095783454800595472, guid: 04b3c093529194c439d4d67f21ad0224, type: 3}
+      propertyPath: movement
+      value: 
+      objectReference: {fileID: 2022158691}
+    - target: {fileID: 3095783454800595472, guid: 04b3c093529194c439d4d67f21ad0224, type: 3}
+      propertyPath: boostRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3095783454800595472, guid: 04b3c093529194c439d4d67f21ad0224, type: 3}
       propertyPath: infoManager
       value: 
       objectReference: {fileID: 860779758}
@@ -32266,14 +32280,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  Speed: 14
-  BoostSpeed: 1.6
+  Speed: 12
+  BoostSpeed: 1.4
   Velocity: {x: 0, y: 0, z: 0}
   MaxBoostTime: 2
   BoostCooldown: 2
   stopRadius: 1
   slowRadius: 5
-  avoidDistance: 3
+  avoidDistance: 4
   DirectionChangingTime: 1
 --- !u!1001 &2024469185
 PrefabInstance:
