@@ -5,8 +5,8 @@ using UnityEngine;
 public class IAChaserAgent : IAAgent
 {
     Quaffle currentQuaffle;
-    public float catchingDistance = 3;
-    public float throwingDistance = 30;
+    public float catchingDistance = 2;
+    public float throwingDistance = 50;
     private bool hasQuaffle;
     private Transform oppositeGoal;
     
@@ -36,6 +36,7 @@ public class IAChaserAgent : IAAgent
         movement.Pursue();
         if (Vector3.Distance(transform.position, currentQuaffle.transform.position) < catchingDistance && currentQuaffle.transform.parent == null)
         {
+            Debug.Log("Picking up quaffle");
             currentQuaffle.PickUp(transform);
             hasQuaffle = true;
             movement.Target = oppositeGoal;

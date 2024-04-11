@@ -45,6 +45,7 @@ public class Bludger : MonoBehaviour
             movement.Target = Target;
             movement.Pursue();
             movement.Boost();
+            movement.Avoid();
         }
         else if (State == BludgerState.Chased)
         {
@@ -53,6 +54,7 @@ public class Bludger : MonoBehaviour
                 movement.Target = iaBeaterAgent.transform;
                 movement.Evade();
             }
+            movement.Avoid();
         }
     }
     

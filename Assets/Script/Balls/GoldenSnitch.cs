@@ -16,6 +16,7 @@ public class GoldenSnitch : MonoBehaviour
         movement.Evade();
         if (Vector3.Distance(transform.position, closestChaser.position) < boostRadius)
             movement.Boost();
+        movement.Avoid();
     }
 
     Transform getClosestChaser()

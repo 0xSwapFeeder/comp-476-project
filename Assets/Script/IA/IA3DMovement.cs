@@ -65,8 +65,7 @@ public class IA3DMovement : MonoBehaviour
         ChangingDirection();
         Vector3 newRotation = transform.rotation.eulerAngles;
         newRotation.x = 0;
-
-        transform.rotation = UnityEngine.Quaternion.Euler(newRotation);
+        transform.LookAt(transform.position + Velocity);
     }
 
     private void getNeighbours()
@@ -194,12 +193,10 @@ public class IA3DMovement : MonoBehaviour
         var size = Physics.OverlapSphereNonAlloc(transform.position, avoidDistance, obstacles); 
         foreach (var obstacle in obstacles)
         {
-            // if (gameObject.tag == "Chasser" && obstacle.CompareTag("Quaffle"))
-            //     Debug.Log("ijdijsd" + "  " + gameObject.tag);
             size--;
             if (size < 0)
                 break;
-            if (obstacle.GetInstanceID() == GetInstanceID() || obstacle.name == name)
+            if (!obstacle.gameObject.CompareTag("Wall"))
                 continue;
             if (!currentObstacle.IsUnityNull() && Vector3.Distance(obstacle.transform.position, transform.position)
             < Vector3.Distance(currentObstacle.position, transform.position))

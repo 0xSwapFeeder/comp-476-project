@@ -17,6 +17,7 @@ public class Quaffle : MonoBehaviour
     {
         startGame();
         rb = GetComponent<Rigidbody>();
+        transform.SetParent(null);
     }
 
     // Update is called once per frame
@@ -54,7 +55,7 @@ public class Quaffle : MonoBehaviour
     public void GetThrown(Transform direction) {
         transform.SetParent(null);
         GetComponent<Rigidbody>().isKinematic = false;
-        GetComponent<Rigidbody>().AddForce(direction.forward * 10, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(direction.forward * 100, ForceMode.Impulse);
         GetComponent<Collider>().enabled = true;
         playerToFollow = null;
     }

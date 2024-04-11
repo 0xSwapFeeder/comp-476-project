@@ -5178,7 +5178,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 777990725}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -6484,6 +6484,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865756119}
   m_CullTransparentMesh: 1
+--- !u!1 &870159741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: d3ff7011086a1bc4d8d952d0bf602f72, type: 3}
+  m_PrefabInstance: {fileID: 1382540265}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &870159745
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870159741}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: d3ff7011086a1bc4d8d952d0bf602f72, type: 3}
 --- !u!1 &894432873
 GameObject:
   m_ObjectHideFlags: 0
@@ -6945,7 +6964,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949497477}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 20
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -7954,10 +7973,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 0
-  moveSpeed: 5
-  rotationSpeed: 5
+  moveSpeed: 10
+  rotationSpeed: 10
   playerCamera: {fileID: 963194227}
-  sensitivity: 0.5
+  sensitivity: 1
 --- !u!65 &1119952158
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9793,6 +9812,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d3ff7011086a1bc4d8d952d0bf602f72, type: 3}
       propertyPath: m_Name
       value: Quidditch pitch OBJ V1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d3ff7011086a1bc4d8d952d0bf602f72, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: d3ff7011086a1bc4d8d952d0bf602f72, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3ff7011086a1bc4d8d952d0bf602f72, type: 3}
@@ -13143,15 +13170,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea356802d67194444b11541fbb84b668, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2652
+      value: 26.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea356802d67194444b11541fbb84b668, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.2652
+      value: 26.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea356802d67194444b11541fbb84b668, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2652
+      value: 26.84
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ea356802d67194444b11541fbb84b668, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13192,6 +13219,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ea356802d67194444b11541fbb84b668, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ea356802d67194444b11541fbb84b668, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ea356802d67194444b11541fbb84b668, type: 3}
       propertyPath: m_Name
@@ -13242,7 +13273,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1939049946}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -13278,7 +13309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  Speed: 10
+  Speed: 14
   BoostSpeed: 1.4
   Velocity: {x: 0, y: 0, z: 0}
   MaxBoostTime: 3
@@ -14912,7 +14943,7 @@ GameObject:
   - component: {fileID: 2123934872}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -15197,6 +15228,10 @@ PrefabInstance:
       propertyPath: infoManager
       value: 
       objectReference: {fileID: 860779758}
+    - target: {fileID: 2032785420797228157, guid: 039fdc6798a53d348950145e32960c1d, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039fdc6798a53d348950145e32960c1d, type: 3}
 --- !u!1001 &3562457278088562124

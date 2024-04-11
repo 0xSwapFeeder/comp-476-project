@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private PlayerClass playerClass;
     public Teams team = Teams.Gryffindor;
-    public float moveSpeed = 7f;
-    public float rotationSpeed = 5f;
+    public float moveSpeed = 20f;
+    public float rotationSpeed = 12f;
     public Camera playerCamera;
-    public float sensitivity = 1.5f;
+    public float sensitivity = 2f;
     private bool isHoldingBall = false;
     private GameObject ballHolding;
     private bool isControlEnabled = true;
@@ -96,7 +96,6 @@ public class Player : MonoBehaviour
             if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.C)) {
                 UpDownInput += -1f;
             }
-            Debug.Log(horizontalInput);
             Vector3 moveDirection = transform.TransformDirection(new Vector3(horizontalInput, UpDownInput, verticalInput).normalized);   
             rb.velocity = moveDirection * moveSpeed;
 

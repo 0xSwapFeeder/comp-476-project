@@ -64,8 +64,16 @@ public class IABeaterAgent : IAAgent
     
     void DefendTeamFromIncomingBludger()
     {
-        var b = bludgers.Where( b => b.State == Bludger.BludgerState.Thrown && b.thrownBy != team).ToList();
-        var closestBludger = b.Aggregate((current, next) => Vector3.Distance(transform.position, current.transform.position) < Vector3.Distance(transform.position, next.transform.position) ? current : next);
+        var b = bludgers.Where(b => b.State == Bludger.BludgerState.Thrown && b.thrownBy != team).ToList();
+        if (b.Count == 0)
+            return;
+        if (b.Count == 1)
+        {
+            movement.Target = b[0].transform;
+            movement.Pursue();
+            return;
+        }
+        var closestBludger = Vector3.Distance(transform.position, b[0].transform.position) < Vector3.Distance(transform.position, b[1].transform.position) ? b[0]: b[1];
         
         movement.Target = closestBludger.transform;
         movement.Pursue();
