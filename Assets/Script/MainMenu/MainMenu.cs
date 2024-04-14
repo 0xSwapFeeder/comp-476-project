@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     public TextMeshProUGUI InfoText;
-    AudioManager audioManager;
-
-    void Start() 
-    {
-        audioManager = FindObjectOfType<AudioManager>();
-    }
 
     public void PlayGame() {
         // Load the next scene
@@ -22,10 +17,6 @@ public class MainMenu : MonoBehaviour
 
     public void QuitGame() {
         Application.Quit();
-    }
-
-    public void FullScreen(bool isFullScreen) {
-        Screen.fullScreen = isFullScreen;
     }
 
     public void setKeeper() {
@@ -74,10 +65,6 @@ public class MainMenu : MonoBehaviour
     public void SetRavenclaw() {
         PlayerPrefs.SetString("Team", "Ravenclaw");
         PlayerPrefs.Save();
-    }
-
-    public void SetVolume(float volume) {
-        audioManager.ChangeVolume(volume);
     }
 
 }

@@ -6620,15 +6620,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.38968897
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.38968897
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.38968897
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18180,15 +18180,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.38968897
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.38968897
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.38968897
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74ead21ecf00ff74996fc82724f24bb7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -32204,6 +32204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golden snitch
       objectReference: {fileID: 0}
+    - target: {fileID: 2753677907005470532, guid: 04b3c093529194c439d4d67f21ad0224, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3095783454800595472, guid: 04b3c093529194c439d4d67f21ad0224, type: 3}
       propertyPath: movement
       value: 
@@ -32280,7 +32284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  Speed: 12
+  Speed: 500
   BoostSpeed: 1.4
   Velocity: {x: 0, y: 0, z: 0}
   MaxBoostTime: 2
