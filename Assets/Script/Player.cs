@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     }
     private Rigidbody rb;
     private PlayerClass playerClass;
-    private Teams team = Teams.Gryffindor;
+    public Teams team = Teams.Gryffindor;
     [Header("Player Settings")]
     public float moveSpeed = 20f;
     public float rotationSpeed = 12f;

@@ -64,7 +64,23 @@ public class Quaffle : MonoBehaviour
     public void GetThrown(Transform direction) {
         transform.SetParent(null);
         rb.isKinematic = false;
-        rb.AddForce(direction.forward * 1000, ForceMode.Impulse);
+        rb.AddForce(direction.forward * 100, ForceMode.Impulse);
+        GetComponent<Collider>().enabled = true;
+        playerToFollow = null;
+    }
+
+    public void GetThrownAtPosition(Vector3 position) {
+        transform.SetParent(null);
+        rb.isKinematic = false;
+        rb.AddForce(position * 100, ForceMode.Impulse);
+        GetComponent<Collider>().enabled = true;
+        playerToFollow = null;
+    }
+
+    public void LoseBall() {
+        transform.SetParent(null);
+        rb.isKinematic = false;
+        rb.AddForce(Vector3.down, ForceMode.Impulse);
         GetComponent<Collider>().enabled = true;
         playerToFollow = null;
     }

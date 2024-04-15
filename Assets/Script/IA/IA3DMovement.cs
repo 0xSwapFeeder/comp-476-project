@@ -291,6 +291,24 @@ public class IA3DMovement : MonoBehaviour
         isBoosting = true;
     }
 
+    public void StayAtDistance(float safeDistance, Transform target = null)
+    {
+        if (target == null) 
+            target = Target;
+        // Calculate the desired position to stay at a safe distance from the target
+        Vector3 desiredPosition = target.position + (transform.position - target.position).normalized * safeDistance;
+        // Calculate the desired velocity to reach the desired position
+        Vector3 desiredVelocity = (desiredPosition - transform.position).normalized * Speed;
+        // Adjust the current velocity towards the desired velocity
+        Velocity = Vector3.Lerp(Velocity, desiredVelocity, Time.deltaTime);
+    }
+
+    public void GetToTarget(Transform target)
+    {
+        Vector3 desiredVelocity = (target.position - transform.position).normalized * Speed;
+        Velocity = Vector3.Lerp(Velocity, desiredVelocity, Time.deltaTime);
+    }
+
     void Stun()
     {
         if (isStunned)

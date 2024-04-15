@@ -12,15 +12,23 @@ public class IAAgent : MonoBehaviour
         Chaser,
         Beater
     }
+
     
+    public enum TeamsTag 
+    {
+        Team1,
+        Team2
+    }
     public IA3DMovement movement;
     public InfoManager.Teams team;
     public AgentType type;
+    public TeamsTag teamPlayer;
 
 
     protected void Start()
     {
         movement = GetComponent<IA3DMovement>();
+        teamPlayer = transform.parent.CompareTag("TeamPlayer") ? TeamsTag.Team1 : TeamsTag.Team2;
     }
 
     // Update is called once per frame
