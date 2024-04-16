@@ -12,38 +12,75 @@ public class IAKeeperAgent : IAAgent
     private Quaffle quaffle;
     private Transform goal;
     private Transform oppositeGoal;
+    private bool hasQuaffle;
+    public float pickupCooldown = 1f;
+    private float lastThrowTime = -1f;
 
     // Start is called before the first frame update
     void Start()
     {
         base.Start();
-        var goal1 = GameObject.FindGameObjectWithTag("GoalFirst");
-        var goal2 = GameObject.FindGameObjectWithTag("GoalSecond");
-        goal = Vector3.Distance(transform.position, goal1.transform.position) < Vector3.Distance(transform.position, goal2.transform.position) ? goal1.transform : goal2.transform;
-        oppositeGoal = goal == goal1.transform ? goal2.transform : goal1.transform;
+        string goalTag = teamPlayer == TeamsTag.Team1 ? "GoalSecond" : "GoalFirst";
+        goal = GetGoal(goalTag);
+        oppositeGoal = GetGoal(goalTag == "GoalFirst" ? "GoalSecond" : "GoalFirst");
     }
 
     void Update()
     {
         base.Update();
         setClosestQuaffle();
-        if (quaffle != null && Vector3.Distance(transform.position, quaffle.transform.position) < defenseDistance)
+        var quaffleHolder = quaffle.transform.parent;
+        if (quaffleHolder != null)
         {
-            transform.LookAt(quaffle.transform);
-            movement.Target = quaffle.transform;
-            movement.Pursue();
+            var isPlayer = quaffleHolder.GetComponentInParent<Player>();
+                InfoManager.Teams quaffleHolderTeam = InfoManager.Teams.Hufflepuff;
+                if (isPlayer != null) {
+                    quaffleHolderTeam = isPlayer.team;
+                } else {
+                    var isIAAgent = quaffleHolder.GetComponent<IAAgent>();
+                    if (isIAAgent != null)
+                        quaffleHolderTeam = quaffleHolder.GetComponent<IAAgent>().team;
+                }
+            if (quaffleHolder != null && quaffleHolder != gameObject.transform)
+            {
+                if (quaffleHolderTeam != team && Vector3.Distance(transform.position, quaffleHolder.transform.position) < defenseDistance)
+                {
+                    movement.Target = quaffleHolder.transform;
+                    movement.GetToTarget(quaffleHolder.transform);
+                }
+            }
         }
-        else if (Vector3.Distance(transform.position, goal.position) > distanceToGoal)
-        {
-            transform.LookAt(goal);
-            movement.Target = goal;
-            movement.Arrive();
-        }
-        else if (quaffle != null && Vector3.Distance(transform.position, quaffle.transform.position) < catchingDistance)
+        if (Vector3.Distance(transform.position, quaffle.transform.position) < catchingDistance && quaffle.transform.parent == null && Time.time - lastThrowTime >= pickupCooldown)
         {
             quaffle.PickUp(transform);
-            quaffle.GetThrown(oppositeGoal);
+            hasQuaffle = true;
+            movement.Target = oppositeGoal;
         }
+        if (hasQuaffle)
+        {
+            transform.LookAt(oppositeGoal);
+            quaffle.GetThrown(transform);
+            hasQuaffle = false;
+            lastThrowTime = Time.time;
+        }
+    }
+    
+    Transform GetGoal(string Tag)
+    {
+        GameObject[] goals = GameObject.FindGameObjectsWithTag(Tag);
+        Transform closestGoal = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject goal in goals)
+        {
+            float distance = Vector3.Distance(transform.position, goal.transform.position);
+            if (distance < closestDistance)
+            {
+                closestGoal = goal.transform;
+                closestDistance = distance;
+            }
+        }
+        return closestGoal;
     }
 
     void setClosestQuaffle()
